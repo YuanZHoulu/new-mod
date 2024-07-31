@@ -18,11 +18,11 @@ public class ExampleJavaMod extends Mod{
         Events.on(ClientLoadEvent.class, e -> {
             //show dialog upon startup
             Time.runTask(10f, () -> {
-                BaseDialog dialog = new BaseDialog("frog");
-                dialog.cont.add("behold").row();
+                BaseDialog dialog = new BaseDialog("chuanshanjia");
+                dialog.cont.add("我地任务完成啦").row();
                 //mod sprites are prefixed with the mod name (this mod is called 'example-java-mod' in its config)
-                dialog.cont.image(Core.atlas.find("example-java-mod-frog")).pad(20f).row();
-                dialog.cont.button("I see", dialog::hide).size(100f, 50f);
+                dialog.cont.image(Core.atlas.find("example-java-mod-frog")).pad(50f).row();
+                dialog.cont.button("没了", dialog::hide).size(100f, 50f);
                 dialog.show();
             });
         });
