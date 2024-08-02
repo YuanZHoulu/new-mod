@@ -18,7 +18,7 @@ public class ExampleJavaMod extends Mod{
         Events.on(ClientLoadEvent.class, e -> {
             //show dialog upon startup
             Time.runTask(10f, () -> {
-                BaseDialog dialog = new BaseDialog("csj");
+                BaseDialog dialog = new BaseDialog("穿山甲");
                 dialog.cont.add("我地任务完成啦").row();
                 //mod sprites are prefixed with the mod name (this mod is called 'example-java-mod' in its config)
                 dialog.cont.image(Core.atlas.find("example-java-mod-csj")).pad(50f).row();
