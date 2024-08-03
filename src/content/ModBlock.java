@@ -1,9 +1,8 @@
-package content.blocks;
+package content;
 
 import arc.graphics.*;
 import arc.math.*;
 import arc.struct.*;
-import content.items.矿石;
 import mindustry.*;
 import mindustry.entities.*;
 import mindustry.entities.abilities.*;
@@ -40,12 +39,12 @@ import mindustry.world.meta.*;
 import static mindustry.Vars.*;
 import static mindustry.type.ItemStack.*;
 
-public class 矿脉{
+public class ModBlock{
     public static Block
             //ores
             ore赤铁矿;
     public static void load(){
-        ore赤铁矿 = new OreBlock(矿石.赤铁矿){{
+        ore赤铁矿 = new OreBlock(ModItem.赤铁矿){{
     oreDefault = true;
     oreThreshold = 0.81f;
     oreScale = 23.47619f;

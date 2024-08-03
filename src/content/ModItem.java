@@ -1,11 +1,12 @@
-package content.items;
+package content;
 
 import arc.graphics.*;
 import arc.struct.*;
 import mindustry.type.*;
 
-public class 矿石{
+class ModItem {
     public static Item
+            //矿物
             赤铁矿;
 
     public static final Seq<Item> serpuloItems = new Seq<>(), erekirItems = new Seq<>(), erekirOnlyItems = new Seq<>();
