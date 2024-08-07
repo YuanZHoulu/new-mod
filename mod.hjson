@@ -2,13 +2,13 @@
 displayName: "测试"
 
 #the internal name of your mod
-name: "测试"
+name: "cs-mod"
 
 #your name
 author: "袁周渌"
 
 #the fully qualified main class of the mod
-main: "example.ExampleJavaMod"
+main: "tutorial.TutorialMod"
 
 #the mod description as seen in the mod dialog
 description: "无"
