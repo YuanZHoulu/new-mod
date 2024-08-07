@@ -19,7 +19,7 @@ public class TutorialMod extends Mod{
                 BaseDialog dialog = new BaseDialog("穿山甲");
                 dialog.cont.add("我地任务完成啦").row();
                 //mod sprites are prefixed with the mod name (this mod is called 'example-java-mod' in its config)
-                dialog.cont.image(Core.atlas.find("cs-mod-csj")).pad(50f).row();
+                dialog.cont.image(Core.atlas.find("tutorial-mod-csj")).pad(50f).row();
                 dialog.cont.button("没了", dialog::hide).size(100f, 50f);
                 dialog.show();
             });
