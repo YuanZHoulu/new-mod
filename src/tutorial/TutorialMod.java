@@ -8,6 +8,7 @@ import mindustry.ui.dialogs.*;
 
 public class TutorialMod extends Mod{
     public static ModItems modItems;
+    private ModBlocks modBlocks;
 
     public TutorialMod(){
         Log.info("Loaded TutorialMod constructor.");
@@ -31,6 +32,7 @@ public class TutorialMod extends Mod{
         Log.info("Loading some tutorial content.");
         modItems = new ModItems();
         modItems.load();
+        modBlocks = new ModBlocks();
+        modBlocks.load();
     }
-
 }
