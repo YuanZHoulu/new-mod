@@ -14,7 +14,7 @@ public class ModBlocks {
             health = 1000;
             size = 2;
             buildCostMultiplier = 0.1f;
-            crushDamageMultiplier =100.0f;
+            armor =100.0f;
         }};
     }
 }
