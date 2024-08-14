@@ -9,7 +9,7 @@ public class ModBlocks {
     public static Wall 测试wall;
 
     public void load() {
-        测试wall = new Wall("测试-wall") {{
+        测试wall = new Wall("测试wall") {{
             requirements(Category.defense, BuildVisibility.shown, new ItemStack[]{});
             health = 1000;
             size = 2;
