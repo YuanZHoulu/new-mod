@@ -24,20 +24,17 @@ public class StatedWall extends Wall {
         states = new TextureRegion[stateNumber];
         for (int i = 0; i < stateNumber; i++) {
             states[i] = Core.atlas.find(name + "-" + i);
-                }
-            }
+        }
+    }
 
-            public class StatedWallBuild extends WallBuild{
+    public class StatedWallBuild extends WallBuild {
         @Override
-        public void updateTile(){
+        public void updateTile() {
             for (ComponentBase<StatedWallBuild> component : components) {
                 component.onUpdate(this);
             }
-            }
         }
 
-
-    public class StatedBuild extends WallBuild {
         @Override
         public void draw() {
             int curIndex = (int) (lostHealthPct() * stateNumber);
@@ -45,7 +42,8 @@ public class StatedWall extends Wall {
             Draw.rect(states[curIndex], x, y);
             this.drawTeamTop();
         }
-        public float lostHealthPct(){
+
+        public float lostHealthPct() {
             return 1f - health / maxHealth;
         }
     }

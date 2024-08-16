@@ -10,22 +10,22 @@ public class ModBlocks {
     public static StatedWall
             //墙
             测试wall;
-
     public static SharingHealth sharingHealth = new SharingHealth();
 
+    @Override
     public void load() {
         //墙
         测试wall = new StatedWall("测试-wall") {{
-            requirements(Category.defense, BuildVisibility.shown, new ItemStack[]{});
+            requirements(Category.defense, BuildVisibility.shown, new ItemStack[]{
+            });
             health = 2000;
-            size = 2;
-            buildCostMultiplier = 0.1f;
-            armor =10.0f;
             insulated = true;
             absorbLasers = true;
+            size = 2;
+            buildCostMultiplier = 0.1f;
             stateNumber = 2;
             update = true;
-            components. add(sharingHealth);
+            components.add(sharingHealth);
         }};
     }
 }
