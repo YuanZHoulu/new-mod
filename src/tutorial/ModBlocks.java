@@ -21,6 +21,7 @@ public class ModBlocks {
             health = 2000;
             insulated = true;
             absorbLasers = true;
+            armor=10;
             size = 2;
             buildCostMultiplier = 0.1f;
             stateNumber = 2;
