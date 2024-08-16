@@ -6,10 +6,13 @@ import arc.graphics.g2d.TextureRegion;
 import mindustry.world.blocks.defense.Wall;
 import tutorial.components.ComponentBase;
 
+import java.util.ArrayList;
+
 public class StatedWall extends Wall {
     public TextureRegion[] states;
     public int stateNumber;
-    public ComponentBase<StatedWallBuild> component;
+    public ArrayList<ComponentBase<StatedWallBuild>> components =
+            new ArrayList<>();
 
     public StatedWall(String name) {
         super(name);
@@ -27,7 +30,7 @@ public class StatedWall extends Wall {
             public class StatedWallBuild extends WallBuild{
         @Override
         public void updateTile(){
-            if (component != null) {
+            for (ComponentBase<StatedWallBuild> component : components) {
                 component.onUpdate(this);
             }
             }

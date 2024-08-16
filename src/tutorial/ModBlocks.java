@@ -9,7 +9,7 @@ import tutorial.components.SharingHealth;
 
 import javax.swing.plaf.nimbus.State;
 
-public class ModBlocks  {
+public class ModBlocks {
     public static StatedWall
             //墙
             测试wall;
@@ -28,7 +28,7 @@ public class ModBlocks  {
             absorbLasers = true;
             stateNumber = 2;
             update = true;
-            component = sharingHealth;
+            components. add(sharingHealth);
         }};
     }
 }
