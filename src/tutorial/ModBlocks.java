@@ -5,11 +5,16 @@ import mindustry.type.ItemStack;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.meta.BuildVisibility;
 import tutorial.blocks.StatedWall;
+import tutorial.components.SharingHealth;
 
-public class ModBlocks {
-    public static Wall
+import javax.swing.plaf.nimbus.State;
+
+public class ModBlocks implements ContentList{
+    public static StatedWall
             //墙
             测试wall;
+
+    public static SharingHealth sharingHealth = new SharingHealth();
 
     public void load() {
         //墙
@@ -22,6 +27,8 @@ public class ModBlocks {
             insulated = true;
             absorbLasers = true;
             stateNumber = 2;
+            update = true;
+            component = sharingHealth;
         }};
     }
 }
