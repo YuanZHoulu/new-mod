@@ -12,9 +12,9 @@ public class SharingHealth extends ComponentBase<StatedWall.StatedWallBuild>{
                 }
                 float thisH = b.health;
                 float otherH = other.health;
-                if (thisH > otherH && thisH > 1 && otherH < other.maxHealth) {
-                    other.health += 1;
-                    b.health -= 1;
+                if (thisH > otherH && thisH > 10 && otherH < other.maxHealth) {
+                    other.health += 10;
+                    b.health -= 10;
             }
         }
     }
