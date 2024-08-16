@@ -9,7 +9,7 @@ import tutorial.components.SharingHealth;
 
 import javax.swing.plaf.nimbus.State;
 
-public class ModBlocks implements ContentList{
+public class ModBlocks {
     public static StatedWall
             //墙
             测试wall;
