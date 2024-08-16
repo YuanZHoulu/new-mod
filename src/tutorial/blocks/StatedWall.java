@@ -18,7 +18,7 @@ public class StatedWall extends Wall {
         super(name);
     }
 
-    @Override
+   @Override
     public void load() {
         super.load();
         states = new TextureRegion[stateNumber];

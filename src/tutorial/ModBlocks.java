@@ -10,9 +10,9 @@ public class ModBlocks {
     public static StatedWall
             //墙
             测试wall;
+
     public static SharingHealth sharingHealth = new SharingHealth();
 
-    @Override
     public void load() {
         //墙
         测试wall = new StatedWall("测试-wall") {{
