@@ -2,12 +2,9 @@ package tutorial;
 
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
-import mindustry.world.blocks.defense.Wall;
 import mindustry.world.meta.BuildVisibility;
 import tutorial.blocks.StatedWall;
 import tutorial.components.SharingHealth;
-
-import javax.swing.plaf.nimbus.State;
 
 public class ModBlocks {
     public static StatedWall
