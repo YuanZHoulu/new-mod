@@ -20,7 +20,7 @@ public class ModBlocks {
         //墙
         测试wall = new StatedWall("测试-wall") {{
             requirements(Category.defense, BuildVisibility.shown, new ItemStack[]{});
-            health = 1000;
+            health = 2000;
             size = 2;
             buildCostMultiplier = 0.1f;
             armor =10.0f;
