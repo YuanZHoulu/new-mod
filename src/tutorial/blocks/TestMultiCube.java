@@ -6,7 +6,6 @@ import arc.util.Tmp;
 import mindustry.graphics.Drawf;
 import mindustry.graphics.Pal;
 import mindustry.world.Block;
-
 import static mindustry.Vars.*;
 import static mindustry.Vars.tilesize;
 
@@ -17,6 +16,7 @@ public class TestMultiCube extends Block {
     public TestMultiCube(String name) {
         super(name);
 
+        rotateDraw = false;
         rotate = true;
     }
 
@@ -26,8 +26,8 @@ public class TestMultiCube extends Block {
 
         x *= tilesize;
         y *= tilesize;
-        x += range;
-        y += range;
+        x += range * tilesize;
+        y += range * tilesize;
 
         Drawf.dashSquare(baseColor, x, y, range * tilesize);
         indexer.eachBlock(player.team(), Tmp.r1.setCentered(x, y, range * tilesize), b -> true, t -> {
