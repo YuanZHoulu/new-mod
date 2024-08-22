@@ -18,7 +18,7 @@ public class ModBlocks {
         A测试wall = new StatedWall("A测试-wall") {{
             requirements(Category.defense, BuildVisibility.shown, new ItemStack[]{
             });
-            health = 100;
+            health = 1000;
             insulated = true;
             absorbLasers = true;
             armor=10;
