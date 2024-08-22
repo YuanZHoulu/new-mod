@@ -1,5 +1,6 @@
 package tutorial.blocks;
 
+import arc.Core;
 import arc.graphics.Color;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.TextureRegion;
@@ -16,7 +17,7 @@ import static mindustry.Vars.*;
 import static mindustry.Vars.tilesize;
 
 public class TestMultiCube extends Block {
-    public @Load("@-top") TextureRegion topRegion;
+    public TextureRegion topRegion;
 
     public Color baseColor = Pal.accent;
     public int range = 14;
@@ -27,7 +28,9 @@ public class TestMultiCube extends Block {
         rotateDraw = false;
         rotate = true;
     }
-
+    public void laod(){
+        topRegion = Core.atlas.find(name + "-" + "top");
+    }
     @Override
     public void drawPlace(int x, int y, int rotation, boolean valid){
         super.drawPlace(x, y, rotation, valid);
