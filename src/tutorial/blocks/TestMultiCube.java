@@ -8,15 +8,14 @@ import arc.math.Mathf;
 import arc.util.Eachable;
 import arc.util.Tmp;
 import mindustry.entities.units.BuildPlan;
-import mindustry.gen.Building;
 import mindustry.graphics.Drawf;
 import mindustry.graphics.Pal;
-import mindustry.world.Block;
+import mindustry.world.blocks.defense.Wall;
 
 import static mindustry.Vars.*;
 import static mindustry.Vars.tilesize;
 
-public class TestMultiCube extends Block {
+public class TestMultiCube extends Wall {
     public TextureRegion topRegion;
 
     public Color baseColor = Pal.accent;
@@ -28,22 +27,11 @@ public class TestMultiCube extends Block {
         rotateDraw = false;
         rotate = true;
     }
-    public void laod(){
-        topRegion = Core.atlas.find(name + "-" + "top");
-    }
-    @Override
-    public void drawPlace(int x, int y, int rotation, boolean valid){
-        super.drawPlace(x, y, rotation, valid);
 
-        x *= tilesize;
-        y *= tilesize;
-        x += offset;
-        y += offset;
+    public void load() {
+        super.load();
 
-        Drawf.dashSquare(baseColor, x, y, range * tilesize);
-        indexer.eachBlock(player.team(), Tmp.r1.setCentered(x, y, range * tilesize), b -> true, t -> {
-            Drawf.selected(t, Tmp.c1.set(baseColor).a(Mathf.absin(4f, 1f)));
-        });
+        topRegion = Core.atlas.find(name + "-top");
     }
 
     @Override
@@ -57,12 +45,27 @@ public class TestMultiCube extends Block {
         return new TextureRegion[]{region, topRegion};
     }
 
-    public class TestMultiCubeBuild extends Building {
+    public class TestMultiCubeBuild extends WallBuild {
 
         @Override
         public void draw(){
             Draw.rect(block.region, x, y);
             Draw.rect(topRegion, x, y, rotdeg());
         }
+    }
+
+    @Override
+    public void drawPlace(int x, int y, int rotation, boolean valid){
+        super.drawPlace(x, y, rotation, valid);
+
+        x *= tilesize;
+        y *= tilesize;
+        x += offset;
+        y += offset;
+
+        Drawf.dashSquare(baseColor, x, y, range * tilesize);
+        indexer.eachBlock(player.team(), Tmp.r1.setCentered(x, y, range * tilesize), b -> true, t -> {
+            Drawf.selected(t, Tmp.c1.set(baseColor).a(Mathf.absin(4f, 1f)));
+        });
     }
 }
