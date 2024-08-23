@@ -3,14 +3,12 @@ package tutorial;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.world.Block;
-import mindustry.world.blocks.defense.Wall;
 import mindustry.world.meta.BuildVisibility;
 import tutorial.blocks.StatedWall;
 import tutorial.blocks.TestMultiCube;
 import tutorial.components.SharingHealth;
 
-import static mindustry.content.Blocks.copperWall;
-import static mindustry.content.Blocks.copperWallLarge;
+import static mindustry.content.Blocks.*;
 
 public class ModBlocks {
     public static StatedWall
@@ -38,7 +36,7 @@ public class ModBlocks {
             stateNumber = 2;
             update = true;
             components.add(sharingHealth);
-            Availableblocks = new Block[]{A测试wall,B测试wall,copperWall,copperWallLarge};
+            Availableblocks = new Block[]{heatSource,heatSource,A测试wall,B测试wall,copperWall,copperWallLarge};
         }};
         B测试wall = new StatedWall("B测试-wall") {{
             requirements(Category.defense, BuildVisibility.shown, new ItemStack[]{
@@ -52,7 +50,7 @@ public class ModBlocks {
             stateNumber = 2;
             update = true;
             components.add(sharingHealth);
-            Availableblocks = new Block[]{A测试wall,B测试wall,copperWall,copperWallLarge};
+            Availableblocks = new Block[]{heatSource,heatSource,A测试wall,B测试wall,copperWall,copperWallLarge};
         }};
 
         //多方块结构
