@@ -6,10 +6,10 @@ import tutorial.blocks.StatedWall;
 public class SharingHealth extends ComponentBase<StatedWall.StatedWallBuild> {
 
     @Override
-    public void onUpdate(StatedWall.StatedWallBuild b, StatedWall[] availableblocks) {
+    public void onUpdate(StatedWall.StatedWallBuild b, StatedWall[] Availableblocks) {
         for (Building other : b.proximity) {
-            for (int i = 0; i < availableblocks.length; i++) {
-                if (other.block == availableblocks[i]) {
+            for (int i = Availableblocks.length - 1; i >= 0; i--) {
+                if (other.block == Availableblocks[i]) {
                     float thisH = b.health;
                     float blostHealthPct = b.health / b.maxHealth;
                     float otherH = other.health;
