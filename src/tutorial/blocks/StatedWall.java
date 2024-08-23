@@ -57,7 +57,9 @@ public class StatedWall extends Wall {
 
         public boolean Sharingdetect(Building other) {
             for (int i = 0; i < Availableblocks.length; i++){
+                if (other.block == Availableblocks[i]){
                 return true;
+                }
             }
             return false;
         }
