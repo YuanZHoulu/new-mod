@@ -51,8 +51,8 @@ public class StatedWall extends Wall {
 
         public boolean detection(Building other) {
             boolean a = true;
-            for (Block availableblock : Availableblocks) {
-                if (other.block == availableblock) {
+            for (int i = 0; i < Availableblocks.length; i++) {
+                if (other.block == Availableblocks[i]) {
                     a = false;
                     break;
                 }
