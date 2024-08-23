@@ -54,7 +54,6 @@ public class StatedWall extends Wall {
             for (int i = 0; i < Availableblocks.length; i++) {
                 if (other.block == Availableblocks[i]) {
                     a = false;
-                    break;
                 }
             }
             return a;
