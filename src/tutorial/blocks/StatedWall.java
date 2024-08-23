@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class StatedWall extends Wall {
     public TextureRegion[] states;
     public int stateNumber;
-    public StatedWall[] Availableblocks;
+    public Block[] Availableblocks;
     public ArrayList<ComponentBase<StatedWallBuild>> components =
             new ArrayList<>();
 
@@ -42,14 +42,19 @@ public class StatedWall extends Wall {
 
         @Override
         public void draw() {
-            int curIndex = (int) ((1f - health / maxHealth) * stateNumber);
+            int curIndex = (int) (lostHealthPct() * stateNumber);
             curIndex = Math.min(curIndex, stateNumber - 1);
             Draw.rect(states[curIndex], x, y);
             this.drawTeamTop();
         }
 
+        public float lostHealthPct() {
+            return 1f - health / maxHealth;
 
-        public boolean detection(Building other) {
+        }
+
+
+        public boolean Sharingdetect(Building other) {
             for (int i = 0; i < Availableblocks.length; i++) {
                 if (other.block == Availableblocks[i]) {
                     return true;
