@@ -4,7 +4,7 @@ import mindustry.gen.Building;
 import tutorial.blocks.StatedWall;
 
 public abstract class ComponentBase<Build extends Building> {
-    public void onUpdate(Build b,StatedWall[] a) {
+    public void onUpdate(Build b) {
     }
 
 }

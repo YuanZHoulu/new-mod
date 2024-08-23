@@ -33,26 +33,20 @@ public class StatedWall extends Wall {
         @Override
         public void updateTile() {
             for (ComponentBase<StatedWall.StatedWallBuild> component : components) {
-                component.onUpdate(this,Availableblocks);
+                component.onUpdate(this);
             }
         }
 
 
         @Override
         public void draw() {
-            int curIndex = (int) (lostHealthPct() * stateNumber);
+            int curIndex = (int) ((1f - health / maxHealth) * stateNumber);
             curIndex = Math.min(curIndex, stateNumber - 1);
             Draw.rect(states[curIndex], x, y);
             this.drawTeamTop();
         }
 
 
-        public float lostHealthPct() {
-            return 1f - health / maxHealth;
-        }
-
-
-        /*
         public boolean detection() {
             for (int i = 0; i < Availableblocks.length; i++) {
                 if (this.block == Availableblocks[i]) {
@@ -61,7 +55,6 @@ public class StatedWall extends Wall {
             }
             return true;
         }
-        */
     }
 }
 
