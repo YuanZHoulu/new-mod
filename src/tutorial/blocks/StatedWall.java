@@ -50,13 +50,12 @@ public class StatedWall extends Wall {
 
 
         public boolean detection(Building other) {
-            boolean a = true;
             for (int i = 0; i < Availableblocks.length; i++) {
                 if (other.block == Availableblocks[i]) {
-                    a = false;
+                    return false;
                 }
             }
-            return a;
+            return true;
         }
     }
 }
