@@ -37,7 +37,7 @@ public class ModBlocks {
             stateNumber = 2;
             update = true;
             components.add(sharingHealth);
-            Availableblocks = new Block[]{A测试wall,B测试wall,copperWall};
+            Availableblocks = new Block[]{A测试wall,B测试wall};
         }};
         B测试wall = new StatedWall("B测试-wall") {{
             requirements(Category.defense, BuildVisibility.shown, new ItemStack[]{
@@ -51,7 +51,7 @@ public class ModBlocks {
             stateNumber = 2;
             update = true;
             components.add(sharingHealth);
-            Availableblocks = new Block[]{A测试wall,B测试wall,copperWall};
+            Availableblocks = new Block[]{A测试wall,B测试wall};
         }};
 
         //多方块结构
