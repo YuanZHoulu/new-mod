@@ -29,36 +29,31 @@ public class StatedWall extends Wall {
         }
     }
 
+
     public class StatedWallBuild extends WallBuild {
         @Override
         public void updateTile() {
-            for (ComponentBase<StatedWallBuild> component : components) {
-                component.onUpdate(this);
+            for (ComponentBase<StatedWall.StatedWallBuild> component : components) {
+                component.onUpdate(this, Availableblocks);
             }
         }
 
-        @Override
-        public void draw() {
-            int curIndex = (int) (lostHealthPct() * stateNumber);
-            curIndex = Math.min(curIndex, stateNumber - 1);
-            Draw.rect(states[curIndex], x, y);
-            this.drawTeamTop();
-        }
 
-        public float lostHealthPct() {
+    @Override
+    public void draw() {
+        int curIndex = (int) (lostHealthPct() * stateNumber);
+        curIndex = Math.min(curIndex, stateNumber - 1);
+        Draw.rect(states[curIndex], x, y);
+        this.drawTeamTop();
+    }
+
+
+    public float lostHealthPct() {
             return 1f - health / maxHealth;
-        }
-
-        public boolean Sharingdetect(Building other) {
-            for (int i = 0; i < Availableblocks.length; i++) {
-                if (other.block == Availableblocks[i]) {
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }
+
 
 
 
