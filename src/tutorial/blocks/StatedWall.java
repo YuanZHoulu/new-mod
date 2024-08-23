@@ -3,6 +3,8 @@ package tutorial.blocks;
 import arc.Core;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.TextureRegion;
+import mindustry.gen.Building;
+import mindustry.world.Block;
 import mindustry.world.blocks.defense.Wall;
 import tutorial.components.ComponentBase;
 
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 public class StatedWall extends Wall {
     public TextureRegion[] states;
     public int stateNumber;
-    public StatedWall[] Availableblocks;
+    public Block[] Availableblocks;
     public ArrayList<ComponentBase<StatedWallBuild>> components =
             new ArrayList<>();
 
@@ -47,9 +49,9 @@ public class StatedWall extends Wall {
         }
 
 
-        public boolean detection() {
+        public boolean detection(Building other) {
             for (int i = 0; i < Availableblocks.length; i++) {
-                if (this.block == Availableblocks[i]) {
+                if (other.block == Availableblocks[i]) {
                     return false;
                 }
             }
