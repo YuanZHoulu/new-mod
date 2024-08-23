@@ -34,7 +34,7 @@ public class StatedWall extends Wall {
     public class StatedWallBuild extends WallBuild {
         @Override
         public void updateTile() {
-            for (ComponentBase<StatedWall.StatedWallBuild> component : components) {
+            for (ComponentBase<StatedWallBuild> component : components) {
                 component.onUpdate(this);
             }
         }
