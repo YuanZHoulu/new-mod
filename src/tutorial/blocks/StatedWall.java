@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class StatedWall extends Wall {
     public TextureRegion[] states;
     public int stateNumber;
-    public Block[] Availableblocks;
+    public StatedWall[] Availableblocks;
     public ArrayList<ComponentBase<StatedWallBuild>> components =
             new ArrayList<>();
 
