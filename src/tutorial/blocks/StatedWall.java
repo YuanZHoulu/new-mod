@@ -21,6 +21,7 @@ public class StatedWall extends Wall {
         super(name);
     }
 
+
     @Override
     public void load() {
         super.load();
@@ -48,23 +49,17 @@ public class StatedWall extends Wall {
             this.drawTeamTop();
         }
 
+
         public float lostHealthPct() {
             return 1f - health / maxHealth;
-
         }
 
 
         public boolean Sharingdetect(Building other) {
-            for (int i = Availableblocks.length - 1; i >= 0; i--) {
-                if (other.block == Availableblocks[i]) {
-                    return true;
-                }
+            for (int i = 0; i < Availableblocks.length; i++){
+                return true;
             }
             return false;
         }
     }
 }
-
-
-
-
