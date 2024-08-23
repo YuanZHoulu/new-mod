@@ -9,6 +9,8 @@ import tutorial.blocks.StatedWall;
 import tutorial.blocks.TestMultiCube;
 import tutorial.components.SharingHealth;
 
+import static mindustry.content.Blocks.copperWall;
+
 public class ModBlocks {
     public static StatedWall
             //墙
@@ -35,7 +37,7 @@ public class ModBlocks {
             stateNumber = 2;
             update = true;
             components.add(sharingHealth);
-            Availableblocks = new Block[]{A测试wall,B测试wall};
+            Availableblocks = new Block[]{A测试wall,B测试wall,copperWall};
         }};
         B测试wall = new StatedWall("B测试-wall") {{
             requirements(Category.defense, BuildVisibility.shown, new ItemStack[]{
@@ -49,7 +51,7 @@ public class ModBlocks {
             stateNumber = 2;
             update = true;
             components.add(sharingHealth);
-            Availableblocks = new Block[]{A测试wall,B测试wall};
+            Availableblocks = new Block[]{A测试wall,B测试wall,copperWall};
         }};
 
         //多方块结构
