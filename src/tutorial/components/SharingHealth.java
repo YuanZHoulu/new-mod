@@ -7,17 +7,15 @@ public class SharingHealth extends ComponentBase<StatedWall.StatedWallBuild> {
     @Override
     public void onUpdate(StatedWall.StatedWallBuild b) {
         for (Building other : b.proximity) {
-            boolean a = b.detection(other);
-            if (a) {
-                continue;
-            }
-            float thisH = b.health;
-            float blostHealthPct = b.health / b.maxHealth;
-            float otherH = other.health;
-            float otherlostHealthPct = other.health / other.maxHealth;
-            if (blostHealthPct > otherlostHealthPct && thisH > 100 && otherH < (other.maxHealth - 100)) {
-                other.health += 100;
-                b.health -= 100;
+            if (b.detection(other)) {
+                float thisH = b.health;
+                float blostHealthPct = b.health / b.maxHealth;
+                float otherH = other.health;
+                float otherlostHealthPct = other.health / other.maxHealth;
+                if (blostHealthPct > otherlostHealthPct && thisH > 100 && otherH < (other.maxHealth - 100)) {
+                    other.health += 100;
+                    b.health -= 100;
+                }
             }
         }
     }
