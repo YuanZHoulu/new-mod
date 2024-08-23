@@ -3,7 +3,6 @@ package tutorial.blocks;
 import arc.Core;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.TextureRegion;
-import mindustry.gen.Building;
 import mindustry.world.blocks.defense.Wall;
 import tutorial.components.ComponentBase;
 
@@ -34,23 +33,35 @@ public class StatedWall extends Wall {
         @Override
         public void updateTile() {
             for (ComponentBase<StatedWall.StatedWallBuild> component : components) {
-                component.onUpdate(this, Availableblocks);
+                component.onUpdate(this,Availableblocks);
             }
         }
 
 
-    @Override
-    public void draw() {
-        int curIndex = (int) (lostHealthPct() * stateNumber);
-        curIndex = Math.min(curIndex, stateNumber - 1);
-        Draw.rect(states[curIndex], x, y);
-        this.drawTeamTop();
-    }
+        @Override
+        public void draw() {
+            int curIndex = (int) (lostHealthPct() * stateNumber);
+            curIndex = Math.min(curIndex, stateNumber - 1);
+            Draw.rect(states[curIndex], x, y);
+            this.drawTeamTop();
+        }
 
 
-    public float lostHealthPct() {
+        public float lostHealthPct() {
             return 1f - health / maxHealth;
         }
+
+
+        /*
+        public boolean detection() {
+            for (int i = 0; i < Availableblocks.length; i++) {
+                if (this.block == Availableblocks[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        */
     }
 }
 

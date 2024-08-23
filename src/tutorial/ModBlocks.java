@@ -2,6 +2,7 @@ package tutorial;
 
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
+import mindustry.world.Block;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.meta.BuildVisibility;
 import tutorial.blocks.StatedWall;
