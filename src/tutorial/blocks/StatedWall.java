@@ -3,7 +3,6 @@ package tutorial.blocks;
 import arc.Core;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.TextureRegion;
-import mindustry.gen.Building;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.Wall;
 import tutorial.components.ComponentBase;
@@ -55,8 +54,13 @@ public class StatedWall extends Wall {
         }
 
 
-        public Block[] Sharingdetect() {
-            return Availableblocks;
+        public boolean Sharingdetect(Block block) {
+            for (Block availableblock : Availableblocks) {
+                if (block == availableblock) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
