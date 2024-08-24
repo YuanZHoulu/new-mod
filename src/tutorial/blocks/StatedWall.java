@@ -15,7 +15,7 @@ import static tutorial.ModBlocks.B测试wall;
 public class StatedWall extends Wall {
     public TextureRegion[] states;
     public int stateNumber;
-    public Block Availableblocks;
+    public Block[] Availableblocks;
     public ArrayList<ComponentBase<StatedWallBuild>> components =
             new ArrayList<>();
 
@@ -58,11 +58,12 @@ public class StatedWall extends Wall {
 
 
         public boolean Sharingdetect(Block block) {
-            if (block == Availableblocks){
-                return true;
-            }else {
-                return false;
+            for (Block availableblocks : Availableblocks){
+                if (block == availableblocks || block == A测试wall || block == B测试wall){
+                    return true;
+                }
             }
+            return false;
         }
     }
 }
