@@ -18,6 +18,7 @@ public class StatedWall extends Wall {
     public TextureRegion[] states;
     public int stateNumber;
     public String Availableblocks;
+    public float Deliveryrate;
     public ArrayList<ComponentBase<StatedWallBuild>> components =
             new ArrayList<>();
 
@@ -40,7 +41,7 @@ public class StatedWall extends Wall {
         @Override
         public void updateTile() {
             for (ComponentBase<StatedWallBuild> component : components) {
-                component.onUpdate(this);
+                component.onUpdate(this,Deliveryrate);
             }
         }
 
