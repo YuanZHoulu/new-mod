@@ -31,12 +31,12 @@ public class ModBlocks {
             insulated = true;
             absorbLasers = true;
             armor=10;
-            size = 1;
+            size = 2;
             buildCostMultiplier = 0.1f;
             stateNumber = 2;
             update = true;
             components.add(sharingHealth);
-            Availableblocks = new Block[]{B测试wall,A测试wall,copperWall,copperWallLarge};
+            Availableblocks = new Block[]{A测试wall,B测试wall,copperWall,copperWallLarge};
         }};
         B测试wall = new StatedWall("B测试-wall") {{
             requirements(Category.defense, BuildVisibility.shown, new ItemStack[]{
@@ -47,10 +47,10 @@ public class ModBlocks {
             armor=10;
             size = 2;
             buildCostMultiplier = 0.1f;
-            stateNumber = 1;
+            stateNumber = 2;
             update = true;
             components.add(sharingHealth);
-            Availableblocks = new Block[]{B测试wall,A测试wall,copperWall,copperWallLarge};
+            Availableblocks = new Block[]{A测试wall,B测试wall,copperWall,copperWallLarge};
         }};
 
         //多方块结构
