@@ -24,7 +24,7 @@ public class ModBlocks {
     public void load() {
 
         //墙
-        A测试wall = new StatedWall("Atest-wall") {{
+        A测试wall = new StatedWall("A测试-wall") {{
             requirements(Category.defense, BuildVisibility.shown, new ItemStack[]{
             });
             health = 1000;
@@ -38,7 +38,7 @@ public class ModBlocks {
             components.add(sharingHealth);
             Availableblocks = new Block[]{B测试wall,A测试wall,copperWall,copperWallLarge};
         }};
-        B测试wall = new StatedWall("Btest-wall") {{
+        B测试wall = new StatedWall("B测试-wall") {{
             requirements(Category.defense, BuildVisibility.shown, new ItemStack[]{
             });
             health = 4000;
@@ -47,7 +47,7 @@ public class ModBlocks {
             armor=10;
             size = 2;
             buildCostMultiplier = 0.1f;
-            stateNumber = 2;
+            stateNumber = 1;
             update = true;
             components.add(sharingHealth);
             Availableblocks = new Block[]{B测试wall,A测试wall,copperWall,copperWallLarge};
