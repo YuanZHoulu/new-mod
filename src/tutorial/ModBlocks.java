@@ -13,7 +13,7 @@ import static mindustry.content.Blocks.*;
 public class ModBlocks {
     public static StatedWall
             //墙
-            A测试wall,B测试wall;
+            Atestwall,Btestwall;
 
     public static TestMultiCube
             //多方块
@@ -24,7 +24,7 @@ public class ModBlocks {
     public void load() {
 
         //墙
-        A测试wall = new StatedWall("A测试-wall") {{
+        Atestwall = new StatedWall("Atest-wall") {{
             requirements(Category.defense, BuildVisibility.shown, new ItemStack[]{
             });
             health = 1000;
@@ -36,9 +36,9 @@ public class ModBlocks {
             stateNumber = 2;
             update = true;
             components.add(sharingHealth);
-            Availableblocks = new Block[]{A测试wall,B测试wall,copperWall,copperWallLarge};
+            Availableblocks = new Block[]{Atestwall,Btestwall,copperWall,copperWallLarge};
         }};
-        B测试wall = new StatedWall("B测试-wall") {{
+        Btestwall = new StatedWall("Btest-wall") {{
             requirements(Category.defense, BuildVisibility.shown, new ItemStack[]{
             });
             health = 4000;
@@ -50,7 +50,7 @@ public class ModBlocks {
             stateNumber = 2;
             update = true;
             components.add(sharingHealth);
-            Availableblocks = new Block[]{A测试wall,B测试wall,copperWall,copperWallLarge};
+            Availableblocks = new Block[]{Atestwall,Btestwall,copperWall,copperWallLarge};
         }};
 
         //多方块结构
