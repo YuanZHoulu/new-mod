@@ -9,6 +9,9 @@ import tutorial.components.ComponentBase;
 
 import java.util.ArrayList;
 
+import static tutorial.ModBlocks.A测试wall;
+import static tutorial.ModBlocks.B测试wall;
+
 public class StatedWall extends Wall {
     public TextureRegion[] states;
     public int stateNumber;
@@ -55,12 +58,11 @@ public class StatedWall extends Wall {
 
 
         public boolean Sharingdetect(Block block) {
-            for (Block availableblock : Availableblocks) {
-                if (block == availableblock) {
-                    return true;
-                }
+            if (block == A测试wall || block == B测试wall){
+                return true;
+            }else {
+                return false;
             }
-            return false;
         }
     }
 }
