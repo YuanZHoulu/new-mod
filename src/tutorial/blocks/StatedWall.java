@@ -9,13 +9,15 @@ import tutorial.components.ComponentBase;
 
 import java.util.ArrayList;
 
+import static mindustry.content.Blocks.copperWall;
+import static mindustry.content.Blocks.copperWallLarge;
 import static tutorial.ModBlocks.A测试wall;
 import static tutorial.ModBlocks.B测试wall;
 
 public class StatedWall extends Wall {
     public TextureRegion[] states;
     public int stateNumber;
-    public Block[] Availableblocks;
+    public String Availableblocks;
     public ArrayList<ComponentBase<StatedWallBuild>> components =
             new ArrayList<>();
 
@@ -58,10 +60,19 @@ public class StatedWall extends Wall {
 
 
         public boolean Sharingdetect(Block block) {
-            for (Block availableblock : Availableblocks) {
-                if (block == availableblock || block == this.block) {
-                    return true;
-                }
+            switch (Availableblocks){
+                case "A测试wall":
+                    if (block == A测试wall || block == B测试wall || block == copperWall){
+                        return true;
+                    }else {
+                        return false;
+                    }
+                case "B测试wall":
+                    if (block == A测试wall || block == B测试wall || block == copperWallLarge){
+                        return true;
+                    }else {
+                        return false;
+                    }
             }
             return false;
         }
