@@ -59,7 +59,7 @@ public class StatedWall extends Wall {
 
         public boolean Sharingdetect(Block block) {
             for (Block availableblock : Availableblocks) {
-                if (block == availableblock) {
+                if (block == availableblock || block == this.block) {
                     return true;
                 }
             }
