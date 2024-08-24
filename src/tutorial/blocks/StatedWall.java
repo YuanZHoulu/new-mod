@@ -58,12 +58,12 @@ public class StatedWall extends Wall {
 
 
         public boolean Sharingdetect(Block block) {
-            for (Block availableblocks : Availableblocks){
-                if (block == availableblocks || block == A测试wall || block == B测试wall){
-                    return true;
-                }
+            int i = Availableblocks.length;
+            if (block == Availableblocks[i] || block == Availableblocks[i-1] || block == Availableblocks[i-2]){
+                return true;
+            }else {
+                return false;
             }
-            return false;
         }
     }
 }
