@@ -5,6 +5,8 @@ import arc.graphics.Color;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.TextureRegion;
 import arc.math.Mathf;
+import arc.math.geom.Geometry;
+import arc.math.geom.Rect;
 import arc.util.Eachable;
 import arc.util.Tmp;
 import mindustry.entities.units.BuildPlan;
@@ -63,9 +65,21 @@ public class TestMultiCube extends Wall {
         x += offset;
         y += offset;
 
+        Rect rect = getRect(Tmp.r1, x, y, rotation);
+
+        Drawf.dashRect(valid ? Pal.accent : Pal.remove, rect);
         Drawf.dashSquare(baseColor, x, y, range * tilesize);
         indexer.eachBlock(player.team(), Tmp.r1.setCentered(x, y, range * tilesize), b -> true, t -> {
             Drawf.selected(t, Tmp.c1.set(baseColor).a(Mathf.absin(4f, 1f)));
         });
+    }
+    public Rect getRect(Rect rect, float x, float y, int rotation){
+        rect.setCentered(x, y, range * tilesize);
+        float len = tilesize * (range + size)/2f;
+
+        rect.x += Geometry.d4x(rotation) * len;
+        rect.y += Geometry.d4y(rotation) * len;
+
+        return rect;
     }
 }

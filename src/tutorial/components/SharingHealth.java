@@ -25,6 +25,9 @@ public class SharingHealth extends ComponentBase<StatedWall.StatedWallBuild> {
                     }else if (thisH > deliveryrate * 10 && otherH < (other.maxHealth - deliveryrate * 10)){
                         b.health -= deliveryrate * 10;
                         other.health += deliveryrate * 10;
+                    }else if (thisH > deliveryrate && otherH < (other.maxHealth - deliveryrate)){
+                        b.health -= deliveryrate;
+                        other.health += deliveryrate;
                     }
                 }
             }
