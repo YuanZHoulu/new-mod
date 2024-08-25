@@ -9,10 +9,8 @@ import tutorial.components.ComponentBase;
 
 import java.util.ArrayList;
 
-import static mindustry.content.Blocks.copperWall;
-import static mindustry.content.Blocks.copperWallLarge;
-import static tutorial.ModBlocks.A测试wall;
-import static tutorial.ModBlocks.B测试wall;
+import static mindustry.content.Blocks.*;
+import static tutorial.ModBlocks.*;
 
 public class StatedWall extends Wall {
     public TextureRegion[] states;
@@ -63,13 +61,25 @@ public class StatedWall extends Wall {
         public boolean Sharingdetect(Block block) {
             switch (Availableblocks){
                 case "A测试wall":
-                    if (block == A测试wall || block == B测试wall || block == copperWall){
+                    if (block == A测试wall || block == B测试wall || block == C测试wall || block == D测试wall || block == copperWall){
                         return true;
                     }else {
                         return false;
                     }
                 case "B测试wall":
-                    if (block == A测试wall || block == B测试wall || block == copperWallLarge){
+                    if (block == A测试wall || block == B测试wall || block == C测试wall || block == D测试wall || block == copperWallLarge){
+                        return true;
+                    }else {
+                        return false;
+                    }
+                case "C测试wall":
+                    if (block == A测试wall || block == B测试wall || block == C测试wall || block == D测试wall || block == titaniumWall){
+                        return true;
+                    }else {
+                        return false;
+                    }
+                case "D测试wall":
+                    if (block == A测试wall || block == B测试wall || block == C测试wall || block == D测试wall || block == titaniumWallLarge){
                         return true;
                     }else {
                         return false;
