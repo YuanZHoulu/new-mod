@@ -33,7 +33,7 @@ public class ModBlocks {
             armor=50;
             size = 1;
             buildCostMultiplier = 0.1f;
-            stateNumber = 1;
+            stateNumber = 2;
             update = true;
             components.add(sharingHealth);
             Availableblocks = ("A测试wall");
@@ -63,7 +63,7 @@ public class ModBlocks {
             armor=50;
             size = 3;
             buildCostMultiplier = 0.1f;
-            stateNumber = 1;
+            stateNumber = 2;
             update = true;
             components.add(sharingHealth);
             Availableblocks = ("C测试wall");
