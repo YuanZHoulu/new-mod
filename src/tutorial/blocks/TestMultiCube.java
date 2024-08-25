@@ -68,7 +68,7 @@ public class TestMultiCube extends Wall {
         Rect rect = getRect(Tmp.r1, x, y, rotation);
 
         Drawf.dashRect(valid ? Pal.accent : Pal.remove, rect);
-        indexer.eachBlock(player.team(), Tmp.r1.setCentered(x, y, range * tilesize), b -> true, t -> {
+        indexer.eachBlock(player.team(), Tmp.r1.setCentered(rect.x, rect.y, range * tilesize), b -> true, t -> {
             Drawf.selected(t, Tmp.c1.set(baseColor).a(Mathf.absin(4f, 1f)));
         });
     }
