@@ -96,7 +96,7 @@ public class ModBlocks {
             size = 1;
             buildCostMultiplier = 0.1f;
             update = true;
-            range = 10;
+            range = 11;
         }};
     }
 }
