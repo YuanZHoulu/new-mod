@@ -37,6 +37,7 @@ public class TestMultiCube extends Block {
 
         rotateDraw = false;
         rotate = true;
+        configurable = true;
     }
 
     public void load() {
