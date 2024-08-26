@@ -112,7 +112,7 @@ public class TestMultiCube extends Block {
         }
 
         public void buildConfiguration(Table table){
-            table.button(Icon.pencil, Styles.cleari, () -> {
+            table.button(Icon.hammer, Styles.cleari, () -> {
             }).size(40f);
         }
     }
