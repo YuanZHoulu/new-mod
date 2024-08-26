@@ -14,6 +14,7 @@ import arc.util.Tmp;
 import mindustry.entities.units.BuildPlan;
 import mindustry.gen.Building;
 import mindustry.graphics.Drawf;
+import mindustry.graphics.Layer;
 import mindustry.graphics.Pal;
 import mindustry.world.Block;
 import mindustry.world.draw.DrawBlock;
@@ -93,9 +94,10 @@ public class TestMultiCube extends Block {
             Vec2 spawn = getUnitSpawn();
             float fulls = range* tilesize/2f;
 
+            Draw.z(Layer.buildBeam);
+
             Lines.stroke(2f, Pal.accent);
             Drawf.dashRectBasic(spawn.x - fulls, spawn.y - fulls, fulls*2f, fulls*2f);
-
         }
 
         public Vec2 getUnitSpawn(){
