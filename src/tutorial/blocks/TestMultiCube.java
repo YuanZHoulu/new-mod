@@ -1,21 +1,24 @@
 package tutorial.blocks;
 
 import arc.Core;
-import arc.graphics.g2d.Draw;
-import arc.graphics.g2d.Lines;
-import arc.graphics.g2d.TextureRegion;
+import arc.graphics.Color;
+import arc.graphics.g2d.*;
 import arc.math.Mathf;
 import arc.math.geom.Geometry;
 import arc.math.geom.Rect;
 import arc.math.geom.Vec2;
+import arc.scene.ui.layout.Scl;
 import arc.struct.Seq;
+import arc.util.Align;
 import arc.util.Eachable;
 import arc.util.Tmp;
+import arc.util.pooling.Pools;
 import mindustry.entities.units.BuildPlan;
 import mindustry.gen.Building;
 import mindustry.graphics.Drawf;
 import mindustry.graphics.Layer;
 import mindustry.graphics.Pal;
+import mindustry.ui.Fonts;
 import mindustry.world.Block;
 import mindustry.world.draw.DrawBlock;
 import mindustry.world.draw.DrawDefault;
@@ -87,6 +90,7 @@ public class TestMultiCube extends Block {
 
 
     public class TestMultiCubeBuild extends Building {
+        public StringBuilder message = new StringBuilder();
 
         @Override
         public void draw(){
@@ -100,8 +104,6 @@ public class TestMultiCube extends Block {
             Lines.stroke(2f, accent);
             Drawf.dashRectBasic(spawn.x - fulls, spawn.y - fulls, fulls*2f, fulls*2f);
 
-            Draw.reset();
-
             indexer.eachBlock(player.team(), Tmp.r1.setCentered(spawn.x, spawn.y, range * tilesize), b -> true, t -> {
                 Drawf.selected(t, Tmp.c1.set(accent).a(Mathf.absin(4f, 1f)));
             });
@@ -111,6 +113,32 @@ public class TestMultiCube extends Block {
             float len = tilesize * (range + size)/2f;
             float unitX = x + Geometry.d4x(rotation) * len, unitY = y + Geometry.d4y(rotation) * len;
             return Tmp.v4.set(unitX, unitY);
+        }
+
+        public void drawSelect(){
+            if(renderer.pixelator.enabled()) return;
+
+            Font font = Fonts.outline;
+            GlyphLayout l = Pools.obtain(GlyphLayout.class, GlyphLayout::new);
+            boolean ints = font.usesIntegerPositions();
+            font.getData().setScale(1 / 4f / Scl.scl(1f));
+            font.setUseIntegerPositions(false);
+
+            CharSequence text = message == null || message.length() == 0 ? "[lightgray]" + Core.atlas.find("tutorial-mod-zh") : message;
+
+            l.setText(font, text, Color.white, 90f, Align.left, true);
+            float offset = 1f;
+
+            Draw.color(0f, 0f, 0f, 0.2f);
+            Fill.rect(x, y - tilesize/2f - l.height/2f - offset, l.width + offset*2f, l.height + offset*2f);
+            Draw.color();
+            font.setColor(Color.white);
+            font.draw(text, x - l.width/2f, y - tilesize/2f - offset, 90f, Align.left, true);
+            font.setUseIntegerPositions(ints);
+
+            font.getData().setScale(1f);
+
+            Pools.free(l);
         }
     }
 }
