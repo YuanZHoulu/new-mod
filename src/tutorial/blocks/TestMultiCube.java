@@ -6,6 +6,7 @@ import arc.graphics.g2d.TextureRegion;
 import arc.math.Mathf;
 import arc.math.geom.Geometry;
 import arc.math.geom.Rect;
+import arc.math.geom.Vec2;
 import arc.struct.Seq;
 import arc.util.Eachable;
 import arc.util.Tmp;
@@ -88,7 +89,17 @@ public class TestMultiCube extends Block {
         public void draw(){
             Draw.rect(block.region, x, y);
             Draw.rect(topRegion, x, y, rotdeg());
+            Vec2 spawn = getUnitSpawn();
+            float fulls = range* tilesize/2f;
 
+            Drawf.dashRectBasic(spawn.x - fulls, spawn.y - fulls, fulls*2f, fulls*2f);
+
+        }
+
+        public Vec2 getUnitSpawn(){
+            float len = tilesize * (range + size)/2f;
+            float unitX = x + Geometry.d4x(rotation) * len, unitY = y + Geometry.d4y(rotation) * len;
+            return Tmp.v4.set(unitX, unitY);
         }
     }
 }
