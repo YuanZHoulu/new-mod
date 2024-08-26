@@ -14,6 +14,8 @@ import mindustry.gen.Building;
 import mindustry.graphics.Drawf;
 import mindustry.graphics.Pal;
 import mindustry.world.Block;
+import mindustry.world.draw.DrawBlock;
+import mindustry.world.draw.DrawDefault;
 
 import static mindustry.Vars.*;
 import static mindustry.Vars.tilesize;
@@ -23,6 +25,8 @@ public class TestMultiCube extends Block {
     public TextureRegion topRegion;
 
     public int range = 14;
+
+    public DrawBlock drawer = new DrawDefault();
 
     public TestMultiCube(String name) {
         super(name);
@@ -41,13 +45,13 @@ public class TestMultiCube extends Block {
     public void drawPlanRegion(BuildPlan plan, Eachable<BuildPlan> list){
         Draw.rect(region, plan.drawx(), plan.drawy());
         Draw.rect(topRegion, plan.drawx(), plan.drawy(), plan.rotation * 90);
+        drawer.drawPlan(this, plan, list);
     }
 
     @Override
     public TextureRegion[] icons(){
         return new TextureRegion[]{region, topRegion};
     }
-
 
 
     @Override
@@ -76,22 +80,15 @@ public class TestMultiCube extends Block {
 
         return rect;
     }
+
+
     public class TestMultiCubeBuild extends Building {
-        public Seq<Building> targets = new Seq<>();
 
         @Override
         public void draw(){
             Draw.rect(block.region, x, y);
             Draw.rect(topRegion, x, y, rotdeg());
-        }
 
-        public void drawSelect(boolean valid,Rect rect){
-            super.drawSelect();
-
-            Drawf.dashSquare(valid ? Pal.accent : Pal.remove,rect.x + range/2f * tilesize, rect.y + range/2f  * tilesize, range * tilesize);
-            for(var target : targets){
-                Drawf.selected(target, Tmp.c1.set(valid ? Pal.accent : Pal.remove).a(Mathf.absin(4f, 1f)));
-            }
         }
     }
 }
