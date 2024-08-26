@@ -2,6 +2,7 @@ package tutorial.blocks;
 
 import arc.Core;
 import arc.graphics.g2d.Draw;
+import arc.graphics.g2d.Lines;
 import arc.graphics.g2d.TextureRegion;
 import arc.math.Mathf;
 import arc.math.geom.Geometry;
@@ -92,6 +93,7 @@ public class TestMultiCube extends Block {
             Vec2 spawn = getUnitSpawn();
             float fulls = range* tilesize/2f;
 
+            Lines.stroke(2f, Pal.accent);
             Drawf.dashRectBasic(spawn.x - fulls, spawn.y - fulls, fulls*2f, fulls*2f);
 
         }
