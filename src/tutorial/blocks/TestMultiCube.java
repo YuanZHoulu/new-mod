@@ -1,27 +1,27 @@
 package tutorial.blocks;
 
 import arc.Core;
-import arc.graphics.Color;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.TextureRegion;
 import arc.math.Mathf;
 import arc.math.geom.Geometry;
 import arc.math.geom.Rect;
+import arc.struct.Seq;
 import arc.util.Eachable;
 import arc.util.Tmp;
 import mindustry.entities.units.BuildPlan;
+import mindustry.gen.Building;
 import mindustry.graphics.Drawf;
 import mindustry.graphics.Pal;
-import mindustry.world.blocks.defense.Wall;
+import mindustry.world.Block;
 
 import static mindustry.Vars.*;
 import static mindustry.Vars.tilesize;
-import static mindustry.logic.LogicOp.len;
 
-public class TestMultiCube extends Wall {
+
+public class TestMultiCube extends Block {
     public TextureRegion topRegion;
 
-    public Color baseColor = Pal.accent;
     public int range = 14;
 
     public TestMultiCube(String name) {
@@ -48,14 +48,7 @@ public class TestMultiCube extends Wall {
         return new TextureRegion[]{region, topRegion};
     }
 
-    public class TestMultiCubeBuild extends WallBuild {
 
-        @Override
-        public void draw(){
-            Draw.rect(block.region, x, y);
-            Draw.rect(topRegion, x, y, rotdeg());
-        }
-    }
 
     @Override
     public void drawPlace(int x, int y, int rotation, boolean valid){
@@ -73,6 +66,7 @@ public class TestMultiCube extends Wall {
             Drawf.selected(t, Tmp.c1.set(valid ? Pal.accent : Pal.remove).a(Mathf.absin(4f, 1f)));
         });
     }
+
     public Rect getRect(Rect rect, float x, float y, int rotation){
         rect.setCentered(x, y, range * tilesize);
         float len = tilesize * (range + size)/2f;
@@ -81,5 +75,23 @@ public class TestMultiCube extends Wall {
         rect.y += Geometry.d4y(rotation) * len;
 
         return rect;
+    }
+    public class TestMultiCubeBuild extends Building {
+        public Seq<Building> targets = new Seq<>();
+
+        @Override
+        public void draw(){
+            Draw.rect(block.region, x, y);
+            Draw.rect(topRegion, x, y, rotdeg());
+        }
+
+        public void drawSelect(boolean valid,Rect rect){
+            super.drawSelect();
+
+            Drawf.dashSquare(valid ? Pal.accent : Pal.remove,rect.x + range/2f * tilesize, rect.y + range/2f  * tilesize, range * tilesize);
+            for(var target : targets){
+                Drawf.selected(target, Tmp.c1.set(valid ? Pal.accent : Pal.remove).a(Mathf.absin(4f, 1f)));
+            }
+        }
     }
 }
