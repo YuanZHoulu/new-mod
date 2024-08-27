@@ -2,13 +2,10 @@ package tutorial;
 
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
-import mindustry.world.Block;
 import mindustry.world.meta.BuildVisibility;
 import tutorial.blocks.StatedWall;
 import tutorial.blocks.TestMultiCube;
 import tutorial.components.SharingHealth;
-
-import static mindustry.content.Blocks.*;
 
 public class ModBlocks {
     public static StatedWall
@@ -17,7 +14,7 @@ public class ModBlocks {
 
     public static TestMultiCube
             //多方块
-            测试多方块;
+            A测试多方块,B测试多方块;
 
     public static SharingHealth sharingHealth = new SharingHealth();
 
@@ -86,7 +83,7 @@ public class ModBlocks {
             }};
 
         //多方块结构
-        测试多方块 = new TestMultiCube("测试多方块") {{
+        A测试多方块 = new TestMultiCube("A测试多方块") {{
             requirements(Category.defense, BuildVisibility.shown, new ItemStack[]{
             });
             health = 4000;
@@ -96,7 +93,21 @@ public class ModBlocks {
             size = 1;
             buildCostMultiplier = 0.1f;
             update = true;
-            range = 11;
+            range = 9;
+            Availableblocks = ("A测试多方块");
+        }};
+        B测试多方块 = new TestMultiCube("B测试多方块") {{
+            requirements(Category.defense, BuildVisibility.shown, new ItemStack[]{
+            });
+            health = 4000;
+            insulated = true;
+            absorbLasers = true;
+            armor = 10;
+            size = 1;
+            buildCostMultiplier = 0.1f;
+            update = true;
+            range = 19;
+            Availableblocks = ("B测试多方块");
         }};
     }
 }

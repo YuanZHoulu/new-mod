@@ -17,12 +17,14 @@ import mindustry.graphics.Layer;
 import mindustry.graphics.Pal;
 import mindustry.ui.Styles;
 import mindustry.world.Block;
+import mindustry.world.Build;
 import mindustry.world.draw.DrawBlock;
 import mindustry.world.draw.DrawDefault;
 
 import static mindustry.Vars.*;
 import static mindustry.Vars.tilesize;
 import static mindustry.graphics.Pal.accent;
+import static tutorial.ModBlocks.*;
 
 
 public class TestMultiCube extends Block {
@@ -31,6 +33,7 @@ public class TestMultiCube extends Block {
     public int range = 14;
 
     public DrawBlock drawer = new DrawDefault();
+    public String Availableblocks;
 
     public TestMultiCube(String name) {
         super(name);
@@ -38,6 +41,7 @@ public class TestMultiCube extends Block {
         rotateDraw = false;
         rotate = true;
         configurable = true;
+
     }
 
     public void load() {
@@ -112,9 +116,85 @@ public class TestMultiCube extends Block {
             return Tmp.v4.set(unitX, unitY);
         }
 
+
         public void buildConfiguration(Table table){
             table.button(Icon.hammer, Styles.cleari, () -> {
+                BuildingStructures (Availableblocks);
             }).size(40f);
+        }
+
+
+        float blockx =0;
+        float blocky =0;
+        public void BuildingStructures (String Availableblocks){
+
+            float len = tilesize * (range + size)/2f;
+
+            float x,y;
+            x = this.x + Geometry.d4x(rotation) * len - range/2f * tilesize;
+            y = this.y + Geometry.d4y(rotation) * len + range/2f * tilesize;
+
+            Block[][] B测试wall结构 = new Block[][]{{A测试wall,A测试wall},{A测试wall,A测试wall}};
+            Block[][] C测试wall结构 = new Block[][]{{A测试wall,A测试wall,A测试wall},{A测试wall,A测试wall,A测试wall},{A测试wall,A测试wall,A测试wall}};
+
+            Block[][][] Structurename = new Block[][][]{};
+            Block[] blocks = new Block[]{};
+            switch (Availableblocks){
+                case "A测试多方块":
+                    Structurename = new Block[][][]{B测试wall结构};
+                           blocks = new Block[]    {B测试wall   };
+                    break;
+                case "B测试多方块":
+                    Structurename = new Block[][][]{C测试wall结构,B测试wall结构};
+                           blocks = new Block[]    {C测试wall,   B测试wall    };
+                    break;
+            }
+
+            boolean build = true;
+            int i = 0;
+            for (i = 0; i < Structurename.length; i++){
+                boolean a =FindingtheStructure(Structurename[i],x,y);
+                if (a){
+                    build = false;
+                    break;
+                }
+            }
+            if (build){
+                Build.beginPlace(null,blocks[i],this.team,(int)blockx,(int)blocky,0);
+            }
+        }
+
+        public boolean FindingtheStructure (Block[][] Structurename,float x,float y){
+            for (int i = 0; i < range; i++){
+                for (int j = 0; j < range; j++){
+                    Building other = world.build((int) x, (int) y);
+                    if (Structurename[1][1] == other.block()){
+                        boolean a =Structureinspection(Structurename,x,y);
+                        if (a){
+                            return true;
+                        }
+                    }
+                    x += 1;
+                }
+                y -= 1;
+                x -= (range-1);
+            }
+            return false;
+        }
+        public boolean Structureinspection (Block[][] Structurename,float x,float y){
+            int n = 0;
+            int m = 0;
+            for ( n = 0; Structurename.length > n; n++){
+                for ( m = 0; Structurename[n].length > m; m++){
+                    Building other = world.build((int) x + m, (int) y - n);
+                    if (Structurename[n][m] != other.block()){
+                        return false;
+                    }
+                }
+            }
+            blockx = x + n/2f;
+            blocky = y - m/2f;
+            return true;
         }
     }
 }
