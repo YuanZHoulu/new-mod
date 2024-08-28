@@ -161,8 +161,8 @@ public class TestMultiCube extends Block {
             boolean build = false;
             int i = 0;
             for (i = 0; i < Structurename.length; i++){
-                boolean a =FindingtheStructure(Structurename[i],x,y,x,y);
-                if (a){
+                //boolean a =FindingtheStructure(Structurename[i],x,y,x,y);
+                if (true){
                     build = true;
                     break;
                 }
