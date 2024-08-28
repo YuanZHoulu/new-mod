@@ -168,7 +168,7 @@ public class TestMultiCube extends Block {
                 }
             }
             if (build){
-                Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
+                //Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
             }
         }
 
