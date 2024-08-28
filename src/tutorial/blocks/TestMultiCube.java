@@ -161,14 +161,15 @@ public class TestMultiCube extends Block {
             boolean build = false;
             int i = 0;
             for (i = 0; i < Structurename.length; i++){
-                boolean a =FindingtheStructure(Structurename[i],x,y,x,y);
+                //boolean a =FindingtheStructure(Structurename[i],x,y,x,y);
+                boolean a =true;
                 if (a){
                     build = true;
                     break;
                 }
             }
             if (build){
-                //Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
+                Build.beginPlace(null, blocks[i], this.team, (int) x, (int) y, 0);
             }
         }
 
