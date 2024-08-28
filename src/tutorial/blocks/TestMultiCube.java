@@ -29,6 +29,8 @@ import static tutorial.ModBlocks.*;
 
 public class TestMultiCube extends Block {
     public TextureRegion topRegion;
+    float blockx =0;
+    float blocky =0;
 
     public int range = 14;
 
@@ -124,18 +126,24 @@ public class TestMultiCube extends Block {
         }
 
 
-        float blockx =0;
-        float blocky =0;
+
         public void BuildingStructures (String Availableblocks){
 
             float len = tilesize * (range + size)/2f;
 
-            float x,y;
-            x = this.x + Geometry.d4x(rotation) * len - range/2f * tilesize;
-            y = this.y + Geometry.d4y(rotation) * len + range/2f * tilesize;
+            int x,y;
+            x = (int) (this.x + Geometry.d4x(rotation) * len - range/2f * tilesize);
+            y = (int) (this.y + Geometry.d4y(rotation) * len + range/2f * tilesize);
 
-            Block[][] B测试wall结构 = new Block[][]{{A测试wall,A测试wall},{A测试wall,A测试wall}};
-            Block[][] C测试wall结构 = new Block[][]{{A测试wall,A测试wall,A测试wall},{A测试wall,A测试wall,A测试wall},{A测试wall,A测试wall,A测试wall}};
+            Block[][] B测试wall结构 = new Block[][]{
+                    {A测试wall,A测试wall},
+                    {A测试wall,A测试wall}
+            };
+            Block[][] C测试wall结构 = new Block[][]{
+                    {A测试wall,A测试wall,A测试wall},
+                    {A测试wall,A测试wall,A测试wall},
+                    {A测试wall,A测试wall,A测试wall}
+            };
 
             Block[][][] Structurename = new Block[][][]{};
             Block[] blocks = new Block[]{};
@@ -150,28 +158,26 @@ public class TestMultiCube extends Block {
                     break;
             }
 
-            boolean build = true;
+            boolean build = false;
             int i = 0;
-            Block blockss = null;
             for (i = 0; i < Structurename.length; i++){
-                boolean a =FindingtheStructure(Structurename[i],x,y);
+                boolean a =FindingtheStructure(Structurename[i],x,y,x,y);
                 if (a){
-                    build = false;
-                    blockss = blocks[i];
+                    build = true;;
                     break;
                 }
             }
             if (build){
-                Build.beginPlace(null, blockss, this.team, (int) blockx, (int) blocky, 0);
+                Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
             }
         }
 
-        public boolean FindingtheStructure (Block[][] Structurename,float x,float y){
+        public boolean FindingtheStructure (Block[][] Structurename,int x,int y,int X,int Y){
             for (int i = 0; i < range; i++){
                 for (int j = 0; j < range; j++){
-                    Building other = world.build((int) x, (int) y);
+                    Building other = world.build( x , y );
                     if (Structurename[1][1] == other.block()){
-                        boolean a =Structureinspection(Structurename,x,y);
+                        boolean a =Structureinspection(Structurename,x,y,X,Y);
                         if (a){
                             return true;
                         }
@@ -179,23 +185,27 @@ public class TestMultiCube extends Block {
                     x += 1;
                 }
                 y -= 1;
-                x -= (range-1);
+                x -= (range);
             }
             return false;
         }
-        public boolean Structureinspection (Block[][] Structurename,float x,float y){
+
+        public boolean Structureinspection (Block[][] Structurename,int x,int y,int X,int Y){
             int n = 0;
             int m = 0;
             for ( n = 0; Structurename.length > n; n++){
                 for ( m = 0; Structurename[n].length > m; m++){
-                    Building other = world.build((int) x + m, (int) y - n);
+                    if (x + m >= X + range || y - n <= Y - range) {
+                        return false;
+                    }
+                    Building other = world.build( x + m , y - n);
                     if (Structurename[n][m] != other.block()){
                         return false;
                     }
                 }
             }
-            blockx = x + n/2f;
-            blocky = y - m/2f;
+            blockx = x + m/2f - 0.5f;
+            blocky = y - n/2f + 0.5f;
             return true;
         }
     }
