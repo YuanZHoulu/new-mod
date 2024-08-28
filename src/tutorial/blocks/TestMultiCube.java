@@ -161,15 +161,14 @@ public class TestMultiCube extends Block {
             boolean build = false;
             int i = 0;
             for (i = 0; i < Structurename.length; i++){
-                //boolean a =FindingtheStructure(Structurename[i],x,y,x,y);
-                boolean a = true;
+                boolean a =FindingtheStructure(Structurename[i],x,y,x,y);
                 if (a){
                     build = true;
                     break;
                 }
             }
             if (build){
-                Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
+                Build.beginPlace(null, blocks[i], this.team, (int) x, (int) y, 0);
             }
         }
 
@@ -177,7 +176,7 @@ public class TestMultiCube extends Block {
             for (int i = 0; i < range; i++){
                 for (int j = 0; j < range; j++){
                     Building other = world.build( x , y );
-                    if (Structurename[1][1] == other.block()){
+                    if (Structurename[0][0] == other.block()){
                         boolean a =Structureinspection(Structurename,x,y,X,Y);
                         if (a){
                             return true;
