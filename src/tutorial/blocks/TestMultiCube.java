@@ -29,8 +29,8 @@ import static tutorial.ModBlocks.*;
 
 public class TestMultiCube extends Block {
     public TextureRegion topRegion;
-    float blockx =0;
-    float blocky =0;
+    float blockx =5;
+    float blocky =5;
 
     public int range = 14;
 
@@ -161,7 +161,8 @@ public class TestMultiCube extends Block {
             boolean build = false;
             int i = 0;
             for (i = 0; i < Structurename.length; i++){
-                boolean a =FindingtheStructure(Structurename[i],x,y,x,y);
+                //boolean a =FindingtheStructure(Structurename[i],x,y,x,y);
+                boolean a = true;
                 if (a){
                     build = true;
                     break;
