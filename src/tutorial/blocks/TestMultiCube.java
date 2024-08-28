@@ -129,7 +129,7 @@ public class TestMultiCube extends Block {
 
         public void BuildingStructures (String Availableblocks){
 
-            float len = tilesize * (range + size)/2f;
+            float len = (range + size)/2f;
 
             int x,y;
             x = (int) (this.x + Geometry.d4x[rotation] * len);// + range/2f * tilesize);
