@@ -172,19 +172,25 @@ public class TestMultiCube extends Block {
                     break;
             }
 
-            boolean build = false;
-            int i = 0;
-            for (i = 0; i < Structurename.length; i++){
-                boolean a =FindingtheStructure(Structurename[i],x,y,x,y);
-                if (a){
-                    build = true;
-                    break;
+            for (boolean b = true; b;) {
+                boolean build = false;
+                int i = 0;
+                for (i = 0; i < Structurename.length; i++) {
+                    boolean a = FindingtheStructure(Structurename[i], x, y, x, y);
+                    if (a) {
+                        build = true;
+                        break;
+                    }
                 }
-            }
-            if (build){
-                Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
-                Rect rect = Rect.tmp.set(blockx, blocky, blocks[i].size, blocks[i].size);
-                Drawf.dashRect(accent ,rect);
+                if (build) {
+                    for (int a = 0; a < 100; a++) {
+                        Rect rect = Rect.tmp.set(blockx, blocky, blocks[i].size, blocks[i].size);
+                        Drawf.dashRect(accent, rect);
+                    }
+                    Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
+                } else {
+                    b = false;
+                }
             }
         }
 
