@@ -176,13 +176,13 @@ public class TestMultiCube extends Block {
         public boolean FindingtheStructure (Block[][] Structurename,int x,int y,int X,int Y){
             for (int i = 0; i < range; i++){
                 for (int j = 0; j < range; j++){
-                    Building other = world.build( x , y );
-                    if (Structurename[0][0] == other.block()){
-                        //boolean a =Structureinspection(Structurename,x,y,X,Y);
-                        //if (a){
-                        //    return true;
-                        //}
-                    }
+                    //Building other = world.build( x , y );
+                    /*if (Structurename[0][0] == other.block()){
+                        boolean a =Structureinspection(Structurename,x,y,X,Y);
+                        if (a){
+                            return true;
+                        }
+                    }*/
                     x += 1;
                 }
                 y -= 1;
