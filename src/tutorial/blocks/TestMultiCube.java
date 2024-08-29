@@ -8,10 +8,8 @@ import arc.math.geom.Rect;
 import arc.math.geom.Vec2;
 import arc.scene.ui.layout.Table;
 import arc.util.Eachable;
-import arc.util.Timer;
 import arc.util.Tmp;
 import mindustry.entities.units.BuildPlan;
-import mindustry.game.Team;
 import mindustry.gen.Building;
 import mindustry.gen.Icon;
 import mindustry.graphics.Drawf;
@@ -34,6 +32,8 @@ public class TestMultiCube extends Block {
     public TextureRegion topRegion;
     float blockx =5;
     float blocky =5;
+    boolean builds = false;
+    float width = 0;
 
     public int range = 14;
 
@@ -114,6 +114,9 @@ public class TestMultiCube extends Block {
             indexer.eachBlock(player.team(), Tmp.r1.setCentered(spawn.x, spawn.y, range * tilesize), b -> true, t -> {
                 Drawf.selected(t, Tmp.c1.set(accent).a(Mathf.absin(4f, 1f)));
             });
+            if (builds){
+                Drawf.dashRect(accent,blockx,blocky,width,width);
+            }
         }
 
         public Vec2 getUnitSpawn(){
@@ -191,21 +194,16 @@ public class TestMultiCube extends Block {
                     }
                 }
                 if (build) {
-                    for (int m = 0; m < 10000; m++){
-                    Rect rect = getRectb(Tmp.r2, blockx, blocky, blocks[i].size, blocks[i].size);
-                    Drawf.dashRect(accent,rect);
-                    }
                     Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
+                    width = blocks[i].size;
+                    builds = true;
+                    stats.timePeriod = 30;
                 } else {
                     b = false;
                 }
             }
+            builds = false;
         }
-        public Rect getRectb(Rect rect, float x, float y, float width,float height){
-            rect.set(x , y , width , height);
-            return rect;
-        }
-
 
         public boolean FindingtheStructure (Block[][] Structurename,int x,int y,int X,int Y){
             for (int i = 0; i < range; i++){
