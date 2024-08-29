@@ -191,21 +191,11 @@ public class TestMultiCube extends Block {
                     }
                 }
                 if (build) {
+                    for (int m = 0; m < 10000; m++){
                     Rect rect = getRectb(Tmp.r2, blockx, blocky, blocks[i].size, blocks[i].size);
                     Drawf.dashRect(accent,rect);
-                    Timer timer1 = new Timer();
-
-                    Block[] finalBlocks = blocks;
-                    int finalI = i;
-                    Team team1 = this.team;
-
-                    timer1.scheduleTask(new Timer.Task() {
-                        @Override
-                        public void run() {
-                            Build.beginPlace(null, finalBlocks[finalI], team1, (int) blockx, (int) blocky, 0);
-                        }
-                    },500);
-
+                    }
+                    Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
                 } else {
                     b = false;
                 }
