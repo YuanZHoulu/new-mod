@@ -189,7 +189,7 @@ public class TestMultiCube extends Block {
                     }
                 }
                 if (build) {
-                    for (int a = 0; a < 100; a++) {
+                    for (int a = 0; a < 5000; a++) {
                         Rect rect = Rect.tmp.set(blockx, blocky, blocks[i].size, blocks[i].size);
                         Drawf.dashRect(accent, rect);
                     }
