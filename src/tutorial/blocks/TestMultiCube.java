@@ -8,8 +8,10 @@ import arc.math.geom.Rect;
 import arc.math.geom.Vec2;
 import arc.scene.ui.layout.Table;
 import arc.util.Eachable;
+import arc.util.Timer;
 import arc.util.Tmp;
 import mindustry.entities.units.BuildPlan;
+import mindustry.game.Team;
 import mindustry.gen.Building;
 import mindustry.gen.Icon;
 import mindustry.graphics.Drawf;
@@ -189,18 +191,29 @@ public class TestMultiCube extends Block {
                     }
                 }
                 if (build) {
-                    Draw.z(Layer.buildBeam);
-                    Drawf.dashRect(accent,blockx,blocky,blocks[i].size,blocks[i].size);
-                    Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                    Rect rect = getRectb(Tmp.r2, blockx, blocky, blocks[i].size, blocks[i].size);
+                    Drawf.dashRect(accent,rect);
+                    Timer timer1 = new Timer();
+
+                    Block[] finalBlocks = blocks;
+                    int finalI = i;
+                    Team team1 = this.team;
+
+                    timer1.scheduleTask(new Timer.Task() {
+                        @Override
+                        public void run() {
+                            Build.beginPlace(null, finalBlocks[finalI], team1, (int) blockx, (int) blocky, 0);
+                        }
+                    },500);
+
                 } else {
                     b = false;
                 }
             }
+        }
+        public Rect getRectb(Rect rect, float x, float y, float width,float height){
+            rect.set(x , y , width , height);
+            return rect;
         }
 
 
