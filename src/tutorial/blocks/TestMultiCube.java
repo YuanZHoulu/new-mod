@@ -18,6 +18,7 @@ import mindustry.graphics.Pal;
 import mindustry.ui.Styles;
 import mindustry.world.Block;
 import mindustry.world.Build;
+import mindustry.world.Tile;
 import mindustry.world.draw.DrawBlock;
 import mindustry.world.draw.DrawDefault;
 
@@ -176,13 +177,13 @@ public class TestMultiCube extends Block {
         public boolean FindingtheStructure (Block[][] Structurename,int x,int y,int X,int Y){
             for (int i = 0; i < range; i++){
                 for (int j = 0; j < range; j++){
-                    //Building other = world.build( x , y );
-                    /*if (Structurename[0][0] == other.block()){
+                    Tile other = world.tile( x , y );
+                    if (Structurename[0][0] == other.block()){
                         boolean a =Structureinspection(Structurename,x,y,X,Y);
                         if (a){
                             return true;
                         }
-                    }*/
+                    }
                     x += 1;
                 }
                 y -= 1;
@@ -199,7 +200,7 @@ public class TestMultiCube extends Block {
                     if (x + m >= X + range || y - n <= Y - range) {
                         return false;
                     }
-                    Building other = world.build( x + m , y - n);
+                    Tile other = world.tile( x + m , y - n);
                     if (Structurename[n][m] != other.block()){
                         return false;
                     }
