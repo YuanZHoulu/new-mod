@@ -178,10 +178,10 @@ public class TestMultiCube extends Block {
                 for (int j = 0; j < range; j++){
                     Building other = world.build( x , y );
                     if (Structurename[0][0] == other.block()){
-                        boolean a =Structureinspection(Structurename,x,y,X,Y);
-                        if (a){
-                            return true;
-                        }
+                        //boolean a =Structureinspection(Structurename,x,y,X,Y);
+                        //if (a){
+                        //    return true;
+                        //}
                     }
                     x += 1;
                 }
