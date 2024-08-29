@@ -123,13 +123,16 @@ public class TestMultiCube extends Block {
 
         public void buildConfiguration(Table table){
             table.button(Icon.hammer, Styles.cleari, () -> {
-                BuildingStructures (Availableblocks);
+                BuildingStructures (Availableblocks,false);
+            }).size(40f);
+            table.button(Icon.hammer, Styles.cleari, () -> {
+                BuildingStructures (Availableblocks,true);
             }).size(40f);
         }
 
 
 
-        public void BuildingStructures (String Availableblocks){
+        public void BuildingStructures (String Availableblocks, boolean c){
 
             float len =tilesize * (range + size)/2f;
 
@@ -173,6 +176,9 @@ public class TestMultiCube extends Block {
             }
 
             for (boolean b = true; b;) {
+                if (c){
+                    b =false;
+                }
                 boolean build = false;
                 int i = 0;
                 for (i = 0; i < Structurename.length; i++) {
