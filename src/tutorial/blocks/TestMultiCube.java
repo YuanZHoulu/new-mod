@@ -94,6 +94,7 @@ public class TestMultiCube extends Block {
     }
 
 
+
     public class TestMultiCubeBuild extends Building {
 
         @Override
@@ -145,17 +146,29 @@ public class TestMultiCube extends Block {
                     {A测试wall,A测试wall,A测试wall},
                     {A测试wall,A测试wall,A测试wall}
             };
+            Block[][] D测试wall结构A = new Block[][]{
+                    {A测试wall,A测试wall,A测试wall,A测试wall},
+                    {A测试wall,B测试wall,B测试wall,A测试wall},
+                    {A测试wall,B测试wall,B测试wall,A测试wall},
+                    {A测试wall,A测试wall,A测试wall,A测试wall}
+            };
+            Block[][] D测试wall结构B = new Block[][]{
+                    {B测试wall,B测试wall,B测试wall,B测试wall},
+                    {B测试wall,B测试wall,B测试wall,B测试wall},
+                    {B测试wall,B测试wall,B测试wall,B测试wall},
+                    {B测试wall,B测试wall,B测试wall,B测试wall}
+            };
 
             Block[][][] Structurename = new Block[][][]{};
             Block[] blocks = new Block[]{};
             switch (Availableblocks){
                 case "A测试多方块":
-                    Structurename = new Block[][][]{B测试wall结构};
-                           blocks = new Block[]    {B测试wall   };
+                    Structurename = new Block[][][]{C测试wall结构,B测试wall结构};
+                           blocks = new Block[]    {C测试wall,   B测试wall   };
                     break;
                 case "B测试多方块":
-                    Structurename = new Block[][][]{C测试wall结构,B测试wall结构};
-                           blocks = new Block[]    {C测试wall,   B测试wall    };
+                    Structurename = new Block[][][]{C测试wall结构,B测试wall结构,D测试wall结构A,D测试wall结构B};
+                           blocks = new Block[]    {C测试wall,   B测试wall    ,D测试wall    ,D测试wall    };
                     break;
             }
 
@@ -163,7 +176,6 @@ public class TestMultiCube extends Block {
             int i = 0;
             for (i = 0; i < Structurename.length; i++){
                 boolean a =FindingtheStructure(Structurename[i],x,y,x,y);
-                //boolean a =true;
                 if (a){
                     build = true;
                     break;
@@ -171,8 +183,11 @@ public class TestMultiCube extends Block {
             }
             if (build){
                 Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
+                Rect rect = Rect.tmp.set(blockx, blocky, blocks[i].size, blocks[i].size);
+                Drawf.dashRect(accent ,rect);
             }
         }
+
 
         public boolean FindingtheStructure (Block[][] Structurename,int x,int y,int X,int Y){
             for (int i = 0; i < range; i++){
