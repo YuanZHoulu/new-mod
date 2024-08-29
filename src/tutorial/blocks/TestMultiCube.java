@@ -189,11 +189,14 @@ public class TestMultiCube extends Block {
                     }
                 }
                 if (build) {
-                    for (int a = 0; a < 5000; a++) {
-                        Rect rect = Rect.tmp.set(blockx, blocky, blocks[i].size, blocks[i].size);
-                        Drawf.dashRect(accent, rect);
-                    }
+                    Draw.z(Layer.buildBeam);
+                    Drawf.dashRect(accent,blockx,blocky,blocks[i].size,blocks[i].size);
                     Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                 } else {
                     b = false;
                 }
