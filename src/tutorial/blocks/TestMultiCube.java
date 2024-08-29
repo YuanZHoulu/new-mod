@@ -132,8 +132,8 @@ public class TestMultiCube extends Block {
             float len =tilesize * (range + size)/2f;
 
             int x,y;
-            x = (int) ((this.x + Geometry.d4x[rotation] * len ) / tilesize);// - range/2f * tilesize
-            y = (int) ((this.y + Geometry.d4y[rotation] * len ) / tilesize);// + range/2f * tilesize
+            x = (int) ((this.x + Geometry.d4x[rotation] * len ) / tilesize - range/2f * tilesize);//
+            y = (int) ((this.y + Geometry.d4y[rotation] * len ) / tilesize + range/2f * tilesize);//
 
             Block[][] B测试wall结构 = new Block[][]{
                     {A测试wall,A测试wall},
