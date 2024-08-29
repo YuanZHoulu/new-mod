@@ -197,12 +197,11 @@ public class TestMultiCube extends Block {
                     Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
                     width = blocks[i].size;
                     builds = true;
-                    stats.timePeriod = 30;
                 } else {
                     b = false;
                 }
             }
-            builds = false;
+            //builds = false;
         }
 
         public boolean FindingtheStructure (Block[][] Structurename,int x,int y,int X,int Y){
