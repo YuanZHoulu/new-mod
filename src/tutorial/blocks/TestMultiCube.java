@@ -239,8 +239,8 @@ public class TestMultiCube extends Block {
                 boolean build = false;
                 int i ;
                 for (i = 0; i < Structurename.length; i++) {
-                    boolean a = FindingtheStructure(Structurename[i], x, y, x, y);
-                    //boolean a = true;
+                    //boolean a = FindingtheStructure(Structurename[i], x, y, x, y);
+                    boolean a = true;
                     if (a) {
                         build = true;
                         break;
@@ -248,7 +248,7 @@ public class TestMultiCube extends Block {
                 }
                 if (build) {
                     Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
-                    //b = false;
+                    b = false;
                 } else {
                     b = false;
                 }
