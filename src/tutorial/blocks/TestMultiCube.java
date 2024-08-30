@@ -179,23 +179,23 @@ public class TestMultiCube extends Block {
 
         public void BuildingStructures (String Availableblocks, boolean c){
 
-            float widthlen = 0,heightlen = 0;
-            float widthx = 0,heighty = 0;
+            float widthlen ,heightlen ;
+            float widthx ,heighty ;
 
             int x,y;
             if (rotation % 2 == 1) {
                 widthlen = (height + size)/2f;
                 heightlen = (width + size)/2f;
-                widthx = height;
-                heighty = width;
+                widthx = height/2f;
+                heighty = width/2f;
             }else {
                 widthlen = (width + size)/2f;
                 heightlen = (height + size)/2f;
-                widthx = width;
-                heighty = height;
+                widthx = width/2f;
+                heighty = height/2f;
             }
-            x = (int) ((this.x + Geometry.d4x[rotation] * widthlen) / tilesize - widthx + 0.5);
-            y = (int) ((this.y + Geometry.d4y[rotation] * heightlen) / tilesize + heighty - 0.5);
+            x = (int) ((this.x + Geometry.d4x[rotation] * widthlen) - widthx + 0.5);
+            y = (int) ((this.y + Geometry.d4y[rotation] * heightlen) + heighty - 0.5);
 
             Block[][] B测试wall结构 = new Block[][]{
                     {A测试wall,A测试wall},
@@ -237,7 +237,7 @@ public class TestMultiCube extends Block {
                     b =false;
                 }
                 boolean build = false;
-                int i = 0;
+                int i ;
                 for (i = 0; i < Structurename.length; i++) {
                     //boolean a = FindingtheStructure(Structurename[i], x, y, x, y);
                     boolean a = true;
@@ -285,8 +285,7 @@ public class TestMultiCube extends Block {
                 heightlen = width;
                 widthlen = height;
             }
-            int n = 0;
-            int m = 0;
+            int n,m = 0;
             for ( n = 0; Structurename.length > n; n++){
                 for ( m = 0; Structurename[n].length > m; m++){
                     if (x + m >= X + widthlen || y - n <= Y - heightlen) {
