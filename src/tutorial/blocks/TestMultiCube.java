@@ -194,8 +194,8 @@ public class TestMultiCube extends Block {
                 widthx = width/2f;
                 heighty = height/2f;
             }
-            x = (int) (this.x / tilesize + Geometry.d4x[rotation] * widthlen);// - widthx + 0.5);
-            y = (int) (this.y / tilesize + Geometry.d4y[rotation] * heightlen);// + heighty - 0.5);
+            x = (int) (this.x / tilesize + Geometry.d4x[rotation] * widthlen - widthx + 0.5);
+            y = (int) (this.y / tilesize + Geometry.d4y[rotation] * heightlen + heighty - 0.5);
 
             Block[][] B测试wall结构 = new Block[][]{
                     {A测试wall,A测试wall},
@@ -239,8 +239,8 @@ public class TestMultiCube extends Block {
                 boolean build = false;
                 int i ;
                 for (i = 0; i < Structurename.length; i++) {
-                    //boolean a = FindingtheStructure(Structurename[i], x, y, x, y);
-                    boolean a = true;
+                    boolean a = FindingtheStructure(Structurename[i], x, y, x, y);
+                    //boolean a = true;
                     if (a) {
                         build = true;
                         break;
@@ -248,7 +248,7 @@ public class TestMultiCube extends Block {
                 }
                 if (build) {
                     Build.beginPlace(null, blocks[i], this.team, (int) x, (int) y, 0);
-                    b = false;
+                    //b = false;
                 } else {
                     b = false;
                 }
