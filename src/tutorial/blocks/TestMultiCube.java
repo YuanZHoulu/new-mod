@@ -94,7 +94,16 @@ public class TestMultiCube extends Block {
     }
 
     public Rect getRect(Rect rect, float x, float y, int rotation){
-        rect.setCentered(x, y, width * tilesize, height * tilesize);
+        float widtha = 0;
+        float heighta= 0;
+        if (rotation % 2 == 1){
+            widtha = tilesize * height / 2f;
+            heighta = tilesize * width / 2f;
+        }else {
+            widtha = tilesize * width / 2f;
+            heighta = tilesize * height / 2f;
+        }
+        rect.setCentered(x, y, widtha * tilesize, heighta * tilesize);
         float widthlen = tilesize * (width + size)/2f;
         float heightlen = tilesize * (height + size)/2f;
 
@@ -263,11 +272,17 @@ public class TestMultiCube extends Block {
         }
 
         public boolean Structureinspection (Block[][] Structurename,int x,int y,int X,int Y){
+            int heightlen = height;
+            int widthlen = width;
+            if (rotation % 2 == 1){
+                heightlen = width;
+                widthlen = height;
+            }
             int n = 0;
             int m = 0;
             for ( n = 0; Structurename.length > n; n++){
                 for ( m = 0; Structurename[n].length > m; m++){
-                    if (x + m >= X + width || y - n <= Y - height) {
+                    if (x + m >= X + widthlen || y - n <= Y - heightlen) {
                         return false;
                     }
                     Tile other = world.tile( x + m , y - n);
