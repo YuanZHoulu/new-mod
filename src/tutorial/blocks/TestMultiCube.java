@@ -179,8 +179,8 @@ public class TestMultiCube extends Block {
 
         public void BuildingStructures (String Availableblocks, boolean c){
 
-            float widthlen = tilesize * (width + size)/2f;
-            float heightlen = tilesize * (height + size)/2f;
+            float widthlen = (width + size)/2f;
+            float heightlen = (height + size)/2f;
 
             int x,y;
             if (rotation % 2 == 1) {
