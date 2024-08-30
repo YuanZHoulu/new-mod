@@ -194,8 +194,8 @@ public class TestMultiCube extends Block {
                 widthx = width/2f;
                 heighty = height/2f;
             }
-            x = (int) ((this.x + Geometry.d4x[rotation] * widthlen) / tilesize);// - widthx + 0.5);
-            y = (int) ((this.y + Geometry.d4y[rotation] * heightlen) / tilesize);// + heighty - 0.5);
+            x = (int) ((this.x + Geometry.d4x[rotation] * widthlen) );// - widthx + 0.5);
+            y = (int) ((this.y + Geometry.d4y[rotation] * heightlen) );// + heighty - 0.5);
 
             Block[][] B测试wall结构 = new Block[][]{
                     {A测试wall,A测试wall},
