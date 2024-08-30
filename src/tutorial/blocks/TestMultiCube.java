@@ -97,13 +97,13 @@ public class TestMultiCube extends Block {
         float widtha = 0;
         float heighta= 0;
         if (rotation % 2 == 1){
-            widtha = tilesize * height / 2f;
-            heighta = tilesize * width / 2f;
+            widtha = tilesize * height;
+            heighta = tilesize * width;
         }else {
-            widtha = tilesize * width / 2f;
-            heighta = tilesize * height / 2f;
+            widtha = tilesize * width;
+            heighta = tilesize * height;
         }
-        rect.setCentered(x, y, widtha * tilesize, heighta * tilesize);
+        rect.setCentered(x, y, widtha , heighta );
         float widthlen = tilesize * (width + size)/2f;
         float heightlen = tilesize * (height + size)/2f;
 
@@ -233,7 +233,8 @@ public class TestMultiCube extends Block {
                 boolean build = false;
                 int i = 0;
                 for (i = 0; i < Structurename.length; i++) {
-                    boolean a = FindingtheStructure(Structurename[i], x, y, x, y);
+                    //boolean a = FindingtheStructure(Structurename[i], x, y, x, y);
+                    boolean a = true;
                     if (a) {
                         build = true;
                         break;
