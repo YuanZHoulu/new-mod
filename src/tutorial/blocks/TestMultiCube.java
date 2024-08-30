@@ -184,11 +184,11 @@ public class TestMultiCube extends Block {
 
             int x,y;
             if (rotation % 2 == 1) {
-                x = (int) ((this.x + Geometry.d4x[rotation] * heightlen) / tilesize - heightlen / 2f + 0.5);
-                y = (int) ((this.y + Geometry.d4y[rotation] * widthlen) / tilesize + widthlen / 2f - 0.5);
+                x = (int) (this.x + Geometry.d4x[rotation] * heightlen - heightlen / 2f + 0.5);
+                y = (int) (this.y + Geometry.d4y[rotation] * widthlen + widthlen / 2f - 0.5);
             }else {
-                x = (int) ((this.x + Geometry.d4x[rotation] * widthlen) / tilesize - widthlen / 2f + 0.5);
-                y = (int) ((this.y + Geometry.d4y[rotation] * heightlen) / tilesize + heightlen / 2f - 0.5);
+                x = (int) (this.x + Geometry.d4x[rotation] * widthlen - widthlen / 2f + 0.5);
+                y = (int) (this.y + Geometry.d4y[rotation] * heightlen + heightlen / 2f - 0.5);
             }
 
             Block[][] B测试wall结构 = new Block[][]{
