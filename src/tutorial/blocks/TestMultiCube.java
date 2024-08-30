@@ -179,17 +179,23 @@ public class TestMultiCube extends Block {
 
         public void BuildingStructures (String Availableblocks, boolean c){
 
-            float widthlen = tilesize * (width + size)/2f;
-            float heightlen = tilesize * (height + size)/2f;
+            float widthlen = 0,heightlen = 0;
+            float widthx = 0,heighty = 0;
 
             int x,y;
             if (rotation % 2 == 1) {
-                x = (int) (this.x + Geometry.d4x[rotation] * heightlen - heightlen / 2f + 0.5);
-                y = (int) (this.y + Geometry.d4y[rotation] * widthlen + widthlen / 2f - 0.5);
+                widthlen = (height + size)/2f;
+                heightlen = (width + size)/2f;
+                widthx = height;
+                heighty = width;
             }else {
-                x = (int) (this.x + Geometry.d4x[rotation] * widthlen - widthlen / 2f + 0.5);
-                y = (int) (this.y + Geometry.d4y[rotation] * heightlen + heightlen / 2f - 0.5);
+                widthlen = (width + size)/2f;
+                heightlen = (height + size)/2f;
+                widthx = width;
+                heighty = height;
             }
+            x = (int) ((this.x + Geometry.d4x[rotation] * widthlen) / tilesize - widthx + 0.5);
+            y = (int) ((this.y + Geometry.d4y[rotation] * heightlen) / tilesize + heighty - 0.5);
 
             Block[][] B测试wall结构 = new Block[][]{
                     {A测试wall,A测试wall},
