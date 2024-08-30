@@ -93,7 +93,8 @@ public class ModBlocks {
             size = 1;
             buildCostMultiplier = 0.1f;
             update = true;
-            range = 7;
+            width = 5;
+            height = 9;
             Availableblocks = ("A测试多方块");
         }};
         B测试多方块 = new TestMultiCube("B测试多方块") {{
@@ -106,7 +107,8 @@ public class ModBlocks {
             size = 1;
             buildCostMultiplier = 0.1f;
             update = true;
-            range = 19;
+            width = 7;
+            height = 19;
             Availableblocks = ("B测试多方块");
         }};
     }

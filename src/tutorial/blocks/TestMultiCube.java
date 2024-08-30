@@ -32,13 +32,11 @@ public class TestMultiCube extends Block {
     public TextureRegion topRegion;
     float blockx =5;
     float blocky =5;
-    boolean builds = false;
-    float width = 0;
-
-    public int range = 14;
 
     public DrawBlock drawer = new DrawDefault();
     public String Availableblocks;
+    public int width = 9;
+    public int height = 9;
 
     public TestMultiCube(String name) {
         super(name);
@@ -79,18 +77,34 @@ public class TestMultiCube extends Block {
 
         Rect rect = getRect(Tmp.r1, x, y, rotation);
 
+        float widthlen = 0;
+        float heightlen = 0;
+        if (rotation % 2 == 1){
+            widthlen = tilesize * height / 2f;
+            heightlen = tilesize * width / 2f;
+        }else {
+             widthlen = tilesize * width / 2f;
+             heightlen = tilesize * height / 2f;
+        }
+
         Drawf.dashRect(valid ? accent : Pal.remove, rect);
-        indexer.eachBlock(player.team(), Tmp.r1.setCentered(rect.x + range/2f * tilesize, rect.y + range/2f  * tilesize, range * tilesize), b -> true, t -> {
+        indexer.eachBlock(player.team(), Tmp.r1.setCentered(rect.x + widthlen, rect.y + heightlen, widthlen * 2, heightlen * 2 ), b -> true, t -> {
             Drawf.selected(t, Tmp.c1.set(valid ? accent : Pal.remove).a(Mathf.absin(4f, 1f)));
         });
     }
 
     public Rect getRect(Rect rect, float x, float y, int rotation){
-        rect.setCentered(x, y, range * tilesize);
-        float len = tilesize * (range + size)/2f;
+        rect.setCentered(x, y, width * tilesize, height * tilesize);
+        float widthlen = tilesize * (width + size)/2f;
+        float heightlen = tilesize * (height + size)/2f;
 
-        rect.x += Geometry.d4x(rotation) * len;
-        rect.y += Geometry.d4y(rotation) * len;
+        if (rotation % 2 == 1) {
+            rect.x += Geometry.d4x(rotation) * heightlen;
+            rect.y += Geometry.d4y(rotation) * widthlen;
+        }else {
+            rect.x += Geometry.d4x(rotation) * widthlen;
+            rect.y += Geometry.d4y(rotation) * heightlen;
+        }
 
         return rect;
     }
@@ -104,24 +118,41 @@ public class TestMultiCube extends Block {
             Draw.rect(block.region, x, y);
             Draw.rect(topRegion, x, y, rotdeg());
             Vec2 spawn = getUnitSpawn();
-            float fulls = range* tilesize/2f;
+
+            float widthlen = 0;
+            float heightlen = 0;
+            if (rotation % 2 == 1){
+                widthlen = tilesize * height / 2f;
+                heightlen = tilesize * width / 2f;
+            }else {
+                widthlen = tilesize * width / 2f;
+                heightlen = tilesize * height / 2f;
+            }
 
             Draw.z(Layer.buildBeam);
 
             Lines.stroke(2f, accent);
-            Drawf.dashRectBasic(spawn.x - fulls, spawn.y - fulls, fulls*2f, fulls*2f);
+            Drawf.dashRectBasic(spawn.x - widthlen, spawn.y - heightlen, widthlen*2f, heightlen*2f);
 
-            indexer.eachBlock(player.team(), Tmp.r1.setCentered(spawn.x, spawn.y, range * tilesize), b -> true, t -> {
+            indexer.eachBlock(player.team(), Tmp.r1.setCentered(spawn.x, spawn.y, widthlen*2f, heightlen*2f), b -> true, t -> {
                 Drawf.selected(t, Tmp.c1.set(accent).a(Mathf.absin(4f, 1f)));
             });
-            if (builds){
-                Drawf.dashRect(accent,blockx,blocky,width,width);
-            }
         }
 
         public Vec2 getUnitSpawn(){
-            float len = tilesize * (range + size)/2f;
-            float unitX = x + Geometry.d4x(rotation) * len, unitY = y + Geometry.d4y(rotation) * len;
+            float widthlen = tilesize * (width + size)/2f;
+            float heightlen = tilesize * (height + size)/2f;
+
+            float unitX = 0;
+            float unitY = 0;
+            if (rotation % 2 == 1) {
+                unitX = x + Geometry.d4x(rotation) * heightlen;
+                unitY = y + Geometry.d4y(rotation) * widthlen;
+            }else {
+                unitX = x + Geometry.d4x(rotation) * widthlen;
+                unitY = y + Geometry.d4y(rotation) * heightlen;
+            }
+
             return Tmp.v4.set(unitX, unitY);
         }
 
@@ -139,11 +170,17 @@ public class TestMultiCube extends Block {
 
         public void BuildingStructures (String Availableblocks, boolean c){
 
-            float len =tilesize * (range + size)/2f;
+            float widthlen = tilesize * (width + size)/2f;
+            float heightlen = tilesize * (height + size)/2f;
 
             int x,y;
-            x = (int) ((this.x + Geometry.d4x[rotation] * len ) / tilesize - range/2f + 0.5 );
-            y = (int) ((this.y + Geometry.d4y[rotation] * len ) / tilesize + range/2f - 0.5 );
+            if (rotation % 2 == 1) {
+                x = (int) ((this.x + Geometry.d4x[rotation] * heightlen) / tilesize - heightlen / 2f + 0.5);
+                y = (int) ((this.y + Geometry.d4y[rotation] * widthlen) / tilesize + widthlen / 2f - 0.5);
+            }else {
+                x = (int) ((this.x + Geometry.d4x[rotation] * widthlen) / tilesize - widthlen / 2f + 0.5);
+                y = (int) ((this.y + Geometry.d4y[rotation] * heightlen) / tilesize + heightlen / 2f - 0.5);
+            }
 
             Block[][] B测试wall结构 = new Block[][]{
                     {A测试wall,A测试wall},
@@ -195,18 +232,21 @@ public class TestMultiCube extends Block {
                 }
                 if (build) {
                     Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
-                    width = blocks[i].size;
-                    builds = true;
                 } else {
                     b = false;
                 }
             }
-            //builds = false;
         }
 
         public boolean FindingtheStructure (Block[][] Structurename,int x,int y,int X,int Y){
-            for (int i = 0; i < range; i++){
-                for (int j = 0; j < range; j++){
+            int heightlen = height;
+            int widthlen = width;
+            if (rotation % 2 == 1){
+                heightlen = width;
+                widthlen = height;
+            }
+            for (int i = 0; i < heightlen; i++){
+                for (int j = 0; j < widthlen; j++){
                     Tile other = world.tile( x , y );
                     if (Structurename[0][0] == other.block()){
                         boolean a =Structureinspection(Structurename,x,y,X,Y);
@@ -217,7 +257,7 @@ public class TestMultiCube extends Block {
                     x += 1;
                 }
                 y -= 1;
-                x -= (range);
+                x -= (widthlen);
             }
             return false;
         }
@@ -227,7 +267,7 @@ public class TestMultiCube extends Block {
             int m = 0;
             for ( n = 0; Structurename.length > n; n++){
                 for ( m = 0; Structurename[n].length > m; m++){
-                    if (x + m >= X + range || y - n <= Y - range) {
+                    if (x + m >= X + width || y - n <= Y - height) {
                         return false;
                     }
                     Tile other = world.tile( x + m , y - n);
