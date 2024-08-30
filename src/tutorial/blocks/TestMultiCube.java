@@ -226,7 +226,7 @@ public class TestMultiCube extends Block {
                     break;
             }
 
-            for (boolean b = true; b;) {
+            for (boolean b = false; b;) {
                 if (c){
                     b =false;
                 }
@@ -241,7 +241,7 @@ public class TestMultiCube extends Block {
                     }
                 }
                 if (build) {
-                    Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
+                    Build.beginPlace(null, blocks[i], this.team, (int) x, (int) y, 0);
                 } else {
                     b = false;
                 }
