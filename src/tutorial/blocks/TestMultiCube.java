@@ -247,7 +247,7 @@ public class TestMultiCube extends Block {
                     }
                 }
                 if (build) {
-                    Build.beginPlace(null, blocks[i], this.team, (int) x, (int) y, 0);
+                    Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
                     //b = false;
                 } else {
                     b = false;
@@ -256,11 +256,13 @@ public class TestMultiCube extends Block {
         }
 
         public boolean FindingtheStructure (Block[][] Structurename,int x,int y,int X,int Y){
-            int heightlen = height;
-            int widthlen = width;
+            int widthlen,heightlen;
             if (rotation % 2 == 1){
                 heightlen = width;
                 widthlen = height;
+            }else {
+                heightlen = height;
+                widthlen = width;
             }
             for (int i = 0; i < heightlen; i++){
                 for (int j = 0; j < widthlen; j++){
@@ -280,11 +282,13 @@ public class TestMultiCube extends Block {
         }
 
         public boolean Structureinspection (Block[][] Structurename,int x,int y,int X,int Y){
-            int heightlen = height;
-            int widthlen = width;
+            int widthlen,heightlen;
             if (rotation % 2 == 1){
                 heightlen = width;
                 widthlen = height;
+            }else {
+                heightlen = height;
+                widthlen = width;
             }
             int n,m = 0;
             for ( n = 0; Structurename.length > n; n++){
