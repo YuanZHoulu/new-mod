@@ -232,7 +232,7 @@ public class TestMultiCube extends Block {
                     break;
             }
 
-            for (boolean b = false; b;) {
+            for (boolean b = true; b;) {
                 if (c){
                     b =false;
                 }
@@ -248,6 +248,7 @@ public class TestMultiCube extends Block {
                 }
                 if (build) {
                     Build.beginPlace(null, blocks[i], this.team, (int) x, (int) y, 0);
+                    b = false;
                 } else {
                     b = false;
                 }
