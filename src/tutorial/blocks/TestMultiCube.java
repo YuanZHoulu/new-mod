@@ -1,24 +1,35 @@
 package tutorial.blocks;
 
 import arc.Core;
+import arc.Events;
 import arc.graphics.g2d.*;
 import arc.math.Mathf;
 import arc.math.geom.Geometry;
 import arc.math.geom.Rect;
 import arc.math.geom.Vec2;
 import arc.scene.ui.layout.Table;
+import arc.struct.Seq;
 import arc.util.Eachable;
+import arc.util.Nullable;
 import arc.util.Tmp;
+import mindustry.content.Blocks;
+import mindustry.content.Fx;
+import mindustry.core.World;
 import mindustry.entities.units.BuildPlan;
+import mindustry.game.EventType;
+import mindustry.game.Team;
 import mindustry.gen.Building;
 import mindustry.gen.Icon;
+import mindustry.gen.Unit;
 import mindustry.graphics.Drawf;
 import mindustry.graphics.Layer;
 import mindustry.graphics.Pal;
+import mindustry.logic.LExecutor;
 import mindustry.ui.Styles;
 import mindustry.world.Block;
 import mindustry.world.Build;
 import mindustry.world.Tile;
+import mindustry.world.blocks.ConstructBlock;
 import mindustry.world.draw.DrawBlock;
 import mindustry.world.draw.DrawDefault;
 
@@ -227,8 +238,8 @@ public class TestMultiCube extends Block {
                            blocks = new Block[]    {C测试wall,   B测试wall   };
                     break;
                 case "B测试多方块":
-                    Structurename = new Block[][][]{C测试wall结构,B测试wall结构,D测试wall结构A,D测试wall结构B};
-                           blocks = new Block[]    {C测试wall,   B测试wall    ,D测试wall    ,D测试wall    };
+                    Structurename = new Block[][][]{D测试wall结构A,D测试wall结构B,C测试wall结构,B测试wall结构};
+                           blocks = new Block[]    {D测试wall    ,D测试wall    ,C测试wall,   B测试wall    };
                     break;
             }
 
@@ -236,19 +247,20 @@ public class TestMultiCube extends Block {
                 if (c){
                     b =false;
                 }
-                boolean build = false;
+                boolean builds = false;
                 int i ;
                 for (i = 0; i < Structurename.length; i++) {
                     boolean a = FindingtheStructure(Structurename[i], x, y, x, y);
                     //boolean a = true;
                     if (a) {
-                        build = true;
+                        builds = true;
                         break;
                     }
                 }
-                if (build) {
+                if (builds) {
                     Build.beginPlace(null, blocks[i], this.team, (int) blockx, (int) blocky, 0);
                     //b = false;
+
                 } else {
                     b = false;
                 }
